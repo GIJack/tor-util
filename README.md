@@ -10,4 +10,4 @@ Currently in early stages with a UI mockup done.
 
 Mockup UI
 ---------
-(example_screenshot.png)
+![screenshot](example_screenshot.png)
