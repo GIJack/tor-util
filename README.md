@@ -10,4 +10,4 @@ Currently in early stages with a UI mockup done.
 
 Mockup UI
 ---------
-![screenshot](example_screenshot.png)
+![screenshot-tab1](screenshot1.png) ![screenshot-tab2](screenshot2.png)

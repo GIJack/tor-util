@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -22,11 +22,17 @@
     <height>460</height>
    </size>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>420</width>
+    <height>460</height>
+   </size>
+  </property>
   <property name="focusPolicy">
    <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>TOR Util</string>
+   <string>TOR(The Onion Router) Utility</string>
   </property>
   <widget class="QTabWidget" name="tabwidget_main">
    <property name="geometry">
@@ -34,8 +40,20 @@
      <x>5</x>
      <y>50</y>
      <width>410</width>
-     <height>405</height>
+     <height>355</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>410</width>
+     <height>355</height>
+    </size>
    </property>
    <property name="focusPolicy">
     <enum>Qt::ClickFocus</enum>
@@ -53,7 +71,7 @@
     <attribute name="title">
      <string>Send &amp;Command</string>
     </attribute>
-    <widget class="QLineEdit" name="text_host">
+    <widget class="QLineEdit" name="text_host_send">
      <property name="geometry">
       <rect>
        <x>95</x>
@@ -109,6 +127,9 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Address of TOR daemon</string>
+     </property>
      <property name="text">
       <string>Host:</string>
      </property>
@@ -116,7 +137,7 @@
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_port">
+    <widget class="QLabel" name="label_port_send">
      <property name="geometry">
       <rect>
        <x>280</x>
@@ -125,6 +146,9 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Port of TOR daemon</string>
+     </property>
      <property name="text">
       <string>Port:</string>
      </property>
@@ -132,7 +156,7 @@
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QComboBox" name="combo_action">
+    <widget class="QComboBox" name="combo_action_send">
      <property name="geometry">
       <rect>
        <x>95</x>
@@ -154,6 +178,9 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Select What To Send</string>
+     </property>
      <property name="text">
       <string>Action:</string>
      </property>
@@ -164,11 +191,17 @@
     <widget class="QPushButton" name="button_send">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>90</y>
-       <width>60</width>
-       <height>30</height>
+       <x>335</x>
+       <y>85</y>
+       <width>65</width>
+       <height>40</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="toolTip">
       <string>Execute Command</string>
@@ -176,21 +209,33 @@
      <property name="text">
       <string>&amp;Send</string>
      </property>
+     <property name="icon">
+      <iconset theme="media-playback-start"/>
+     </property>
     </widget>
-    <widget class="QPlainTextEdit" name="text_output_cmd">
+    <widget class="QPlainTextEdit" name="text_output_send">
      <property name="geometry">
       <rect>
        <x>5</x>
        <y>130</y>
        <width>395</width>
-       <height>235</height>
+       <height>185</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="focusPolicy">
       <enum>Qt::ClickFocus</enum>
      </property>
+     <property name="toolTip">
+      <string>Return Values From TOR Daemon</string>
+     </property>
     </widget>
-    <widget class="QLineEdit" name="text_password_cmd">
+    <widget class="QLineEdit" name="text_password_send">
      <property name="geometry">
       <rect>
        <x>95</x>
@@ -198,6 +243,9 @@
        <width>145</width>
        <height>30</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Optional: TOR API Password. Omitted if Blank</string>
      </property>
      <property name="inputMethodHints">
       <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
@@ -221,6 +269,9 @@
        <height>30</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Optional: TOR API Password. Omitted if Blank</string>
+     </property>
      <property name="text">
       <string>Password:</string>
      </property>
@@ -233,7 +284,7 @@
     <attribute name="title">
      <string>Generate &amp;Password</string>
     </attribute>
-    <widget class="QLineEdit" name="text_password_gen">
+    <widget class="QLineEdit" name="text_password_hash">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -241,6 +292,9 @@
        <width>225</width>
        <height>30</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Password to hash</string>
      </property>
      <property name="inputMethodHints">
       <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
@@ -255,7 +309,7 @@
       <enum>QLineEdit::Password</enum>
      </property>
     </widget>
-    <widget class="QLabel" name="label_password">
+    <widget class="QLabel" name="label_password_hash">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -264,11 +318,14 @@
        <height>31</height>
       </rect>
      </property>
+     <property name="toolTip">
+      <string>Password to hash</string>
+     </property>
      <property name="text">
       <string>Password:</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="button_password">
+    <widget class="QPushButton" name="button_gen_password_hash">
      <property name="geometry">
       <rect>
        <x>320</x>
@@ -284,13 +341,13 @@
       <string>&amp;Generate</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="text_output_gen">
+    <widget class="QPlainTextEdit" name="text_output_hash">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>5</x>
        <y>50</y>
-       <width>390</width>
-       <height>315</height>
+       <width>395</width>
+       <height>265</height>
       </rect>
      </property>
      <property name="focusPolicy">
@@ -344,6 +401,34 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
+  <widget class="QPushButton" name="button_clear">
+   <property name="geometry">
+    <rect>
+     <x>345</x>
+     <y>415</y>
+     <width>70</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="toolTip">
+    <string>Clear Outputs</string>
+   </property>
+   <property name="text">
+    <string>C&amp;lear</string>
+   </property>
+   <property name="icon">
+    <iconset theme="editclear"/>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
   <action name="action_api_send">
    <property name="text">
     <string>_api_send</string>
@@ -360,20 +445,28 @@
     <string>Ctrl+G</string>
    </property>
   </action>
+  <action name="action_clear_display">
+   <property name="text">
+    <string>_clear_display</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
-  <tabstop>text_host</tabstop>
+  <tabstop>text_host_send</tabstop>
   <tabstop>text_port</tabstop>
-  <tabstop>combo_action</tabstop>
-  <tabstop>text_password_cmd</tabstop>
+  <tabstop>combo_action_send</tabstop>
+  <tabstop>text_password_send</tabstop>
   <tabstop>button_send</tabstop>
-  <tabstop>text_password_gen</tabstop>
-  <tabstop>button_password</tabstop>
+  <tabstop>text_password_hash</tabstop>
+  <tabstop>button_gen_password_hash</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
-   <sender>button_password</sender>
+   <sender>button_gen_password_hash</sender>
    <signal>clicked()</signal>
    <receiver>action_gen_password</receiver>
    <slot>trigger()</slot>
@@ -397,6 +490,22 @@
     <hint type="sourcelabel">
      <x>376</x>
      <y>186</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_clear</sender>
+   <signal>clicked()</signal>
+   <receiver>action_clear_display</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>382</x>
+     <y>434</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
