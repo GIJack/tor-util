@@ -1,6 +1,13 @@
 #!/usr/bin/env python
+prog_meta = {
+    'name' : "Onion Router API Utility",
+    'version' : "0.0.0"
+}
 tor_util_desc='''
-This is a utility for controling TOR via the API. It does two things.
+This is a utility for controling TOR via the API. This is the GUI
+version written with Qt5
+
+It does two things:
 1. Send commands to the API over the network
 2. Generates hashed passwords for use in the torrc file
 
@@ -22,6 +29,12 @@ def main():
     widget = uic.loadUi("tor-util.ui")
     
     # Button Presses go here:
+    
+    # Initialization
+    widget.label_name.setText(prog_meta['name'])
+    widget.label_version.setText(prog_meta['version'])
+    
+    # Load Config
     
     widget.show()
     sys.exit(app.exec_())

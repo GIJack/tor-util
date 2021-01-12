@@ -191,10 +191,10 @@
     <widget class="QPushButton" name="button_send">
      <property name="geometry">
       <rect>
-       <x>335</x>
-       <y>85</y>
-       <width>65</width>
-       <height>40</height>
+       <x>330</x>
+       <y>80</y>
+       <width>70</width>
+       <height>45</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -210,7 +210,8 @@
       <string>&amp;Send</string>
      </property>
      <property name="icon">
-      <iconset theme="media-playback-start"/>
+      <iconset theme="media-playback-start">
+       <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
     <widget class="QPlainTextEdit" name="text_output_send">
@@ -405,9 +406,9 @@
    <property name="geometry">
     <rect>
      <x>345</x>
-     <y>415</y>
+     <y>410</y>
      <width>70</width>
-     <height>40</height>
+     <height>45</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -423,7 +424,8 @@
     <string>C&amp;lear</string>
    </property>
    <property name="icon">
-    <iconset theme="editclear"/>
+    <iconset theme="editclear">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="flat">
     <bool>false</bool>
