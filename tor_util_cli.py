@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+prog_meta = {
+    'name' : "tor_util",
+    'version' : "0.0.0"
+}
 tor_util_desc='''
 Utility for controling TOR via the API. Command line version.
 
@@ -26,6 +30,7 @@ def main():
 
     parser.add_argument("-t","--password-prompt" , help="Prompt for password. overrides settings",action="store_true")
     parser.add_argument("-w","--password"        , help="Password. overrides settings",type=str,nargs=1)
+    parser.add_argument("-V","--version"         , help="Print Version and Exit")
     
     parser_network = parser.add_argument_group("Network","Network Settings for send commands")
     parser_network.add_argument("-h","--host"    , help="Address/hostname of TOR daemon")
