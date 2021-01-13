@@ -63,7 +63,7 @@ def proc_config_start():
     # check to make sure all items are present. If not, load them
     for item in default_config.keys():
         if item not in loaded_config.keys():
-            loaded_config[item] = default_config['item']
+            loaded_config[item] = default_config[item]
 
     return loaded_config
 
