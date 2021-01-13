@@ -10,7 +10,7 @@ import json
 import socket
 import stem
 import stem.connection
-from stem.control import Controller
+#from stem.control import Controller
 
 conf_file      = os.getenv("HOME") + "/.config/tor_util/config"
 default_config = {
@@ -19,7 +19,7 @@ default_config = {
     'password' : ""
 }
 
-send_commands = [ "New IP" ]
+send_commands = [ "New IP", "Flush DNS" ] # [ "Dormant Mode", "Active Mode" ] #don't work for some reason
 
 def read_config(file_name):
     '''Loads JSON config returns dict{} with keys'''
@@ -69,17 +69,39 @@ def proc_config_start():
 
     return loaded_config
 
-def send_tor_new_ip(host,port,password=""):
+def send_tor_new_ip(command,host,port,password=""):
     '''Send a NEWNYM command for a new IP address over TOR. Needs host, port, and optionally password. returns tupple with error code and message'''
     '''error code: 0 is success, everything else is fail. Message is for updating status'''
     # build the command.
     auth_string = "AUTHENTICATE " + '\"' + password + '\"' + "\n"
-    command     = "SIGNAL NEWNYM\n"
+    output = ""
 
-    out_data = (0,"")
-
+    # Set up the control object
+    control_obj = stem.socket.ControlPort(address=host, port=port, connect=False)
     try:
-        tor_con = Controller.from_port(address=host,port=port)
+        control_obj.connect()
+    except stem.SocketError:
+        output = "1 Could Not Connect to " + host + " on port " + str(port)
+        return output
+    try:
+        stem.connection.authenticate(control_obj,password)
+    except stem.connection.IncorrectPassword:
+        output = "1 Incorrect Password, host: " + host + "port: " + str(port)
+        return output
+        
+    try:
+        control_obj.send(command)
     except:
-        out_data = (1,"")
+        output = "1 Could not send command?"
+        return output
+        
+    message_obj    = control_obj.recv()
+    #if message_obj.is_ok() == True:
+    #    output_code = 0
+    #else:
+    #    output_code = 2
+    output = message_obj.raw_content()
     
+    control_obj.close()
+    
+    return output

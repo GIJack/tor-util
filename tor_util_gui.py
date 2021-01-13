@@ -49,15 +49,28 @@ def send_action():
     '''This is what happens when send button is pressed'''
     config = get_send_opts()
     action = widget.combo_action_send.currentText()
-    print(config)
-    print(action)
     
     # Do function
     if action == "New IP":
-       widget.text_output_send.appendPlainText("* Requesting new IP...")
-       result = send_tor_new_ip(config['tor_host'],config['tor_port'],config['password'])
-       # TODO: output sucess
+       command = "SIGNAL NEWNYM"
+       widget.text_output_send.appendPlainText("* Sending New IP Request...")
 
+    elif action == "Flush DNS":
+        widget.text_output_send.appendPlainText("* Clearing DNS Cache...")
+        command = "SIGNAL CLEARDNSCACHE"
+    elif action == "Dormant Mode":
+        widget.text_output_send.appendPlainText("* Putting TOR Daemon in Dormant Mode...")
+        command = "SIGNAL DORMANT"
+    elif action == "Active Mode":
+        widget.text_output_send.appendPlainText("* Restoring TOR Daemon to Active Mode...")
+        command = "SIGNAL ACTIVE"
+    else:
+        widget.text_output_send.appendPlainText(action + " Unsupported")
+        return
+    
+    result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
+    widget.text_output_send.appendPlainText(result)
+    
 def clear_output_boxes():
     '''Clear Output on button press'''
     widget.text_output_send.setPlainText('')
