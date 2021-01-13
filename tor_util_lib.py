@@ -9,11 +9,13 @@ import os
 import json
 import socket
 import stem
+import stem.connection
+from stem.control import Controller
 
 conf_file      = os.getenv("HOME") + "/.config/tor_util/config"
 default_config = {
     'tor_host' : "127.0.0.1",
-    'tor_port' : "9051",
+    'tor_port' : 9051,
     'password' : ""
 }
 
@@ -68,14 +70,16 @@ def proc_config_start():
     return loaded_config
 
 def send_tor_new_ip(host,port,password=""):
-    '''Send a NEWNYM command for a new IP address over TOR. Needs host, port, and optionally password'''
+    '''Send a NEWNYM command for a new IP address over TOR. Needs host, port, and optionally password. returns tupple with error code and message'''
+    '''error code: 0 is success, everything else is fail. Message is for updating status'''
     # build the command.
     auth_string = "AUTHENTICATE " + '\"' + password + '\"' + "\n"
     command     = "SIGNAL NEWNYM\n"
-    
-    status
-    connection = socket.create_connection((host,port))
-    
-    #clean up
-    socket.close()
+
+    out_data = (0,"")
+
+    try:
+        tor_con = Controller.from_port(address=host,port=port)
+    except:
+        out_data = (1,"")
     
