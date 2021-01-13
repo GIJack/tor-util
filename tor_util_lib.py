@@ -5,7 +5,7 @@ This is a utility for controling TOR via the API
 Common Library
 '''
 prog_meta = {
-    'name' : "tor_util",
+    'name' : "TOR API Utility",
     'version' : "0.0.1"
 }
 import os
