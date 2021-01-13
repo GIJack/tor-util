@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-prog_meta = {
-    'name' : "tor_util",
-    'version' : "0.0.0"
-}
 tor_util_desc='''
 Utility for controling TOR via the API. Command line version.
 

@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-prog_meta = {
-    'name' : "Onion Router API Utility",
-    'version' : "0.0.0"
-}
 tor_util_desc='''
 This is a utility for controling TOR via the API. This is the GUI
 version written with Qt5
