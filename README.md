@@ -6,7 +6,8 @@ API calls over the network to a running TOR daemon.
 
 This app also can generate hashed passwords for use with the daemon.
 
-Currently in early stages with a UI mockup done.
+Status: config works, UI is in place. All that is needed is actually sending
+commands
 
 Mockup UI
 ---------
