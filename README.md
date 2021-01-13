@@ -6,8 +6,9 @@ API calls over the network to a running TOR daemon.
 
 This app also can generate hashed passwords for use with the daemon.
 
-Status: config works, UI is in place. All that is needed is actually sending
-commands
+Status: Sending commands works, but freezes on timeout failures.
+
+WIP: password hashing
 
 Mockup UI
 ---------
