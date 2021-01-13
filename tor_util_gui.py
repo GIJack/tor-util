@@ -36,8 +36,13 @@ def get_send_opts():
     '''get options from GUI and return them as a dict{}'''
     config = {}
     config['tor_host'] = widget.text_host_send.text()
-    config['tor_port'] = widget.text_port_send.text()
     config['password'] = widget.text_password_send.text()
+    
+    try:
+        config['tor_port'] = int( widget.text_port_send.text() )
+    except:
+        config['tor_port'] = default_config['tor_port']
+        
     return config
 
 def send_action():
@@ -85,7 +90,7 @@ def main():
         config = default_config
             
     widget.text_host_send.setText(config['tor_host'])
-    widget.text_port_send.setText(config['tor_port'])
+    widget.text_port_send.setText( str(config['tor_port']) )
     widget.text_password_send.setText(config['password'])
     
     widget.show()

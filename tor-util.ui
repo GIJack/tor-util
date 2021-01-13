@@ -111,6 +111,9 @@
      <property name="inputMethodHints">
       <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
      </property>
+     <property name="inputMask">
+      <string notr="true">99999</string>
+     </property>
      <property name="text">
       <string/>
      </property>
