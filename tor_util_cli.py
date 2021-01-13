@@ -21,6 +21,8 @@ Local Utilities(Commands):
 '''
 tor_util_desc = tor_util_desc.strip()
 
+from tor_util_lib import *
+
 import argparse
 
 def main():

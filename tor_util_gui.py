@@ -16,27 +16,50 @@ Path, resulting in new exit node, and new IP for TOR connection
 '''
 tor_util_desc = tor_util_desc.strip()
 
+from tor_util_lib import *
+
 import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget, QApplication
 
+def final_cleanup():
+    '''Cleanup before exit'''
+    config = {}
+    config['tor_host'] = widget.text_host_send.text()
+    config['tor_port'] = widget.text_port_send.text()
+    config['password'] = widget.text_password_send.text()
+    
+    write_config(conf_file,config)
 
 def main():
     app = QApplication(sys.argv)
 
     # Main Window
-    global window
+    global widget
     widget = uic.loadUi("tor-util.ui")
     
     # Button Presses go here:
+    
+    # Misc effects:
+    widget.action_exit_cleanup.triggered.connect(final_cleanup)
     
     # Initialization
     widget.label_name.setText(prog_meta['name'])
     widget.label_version.setText(prog_meta['version'])
     
     # Load Config
+    try:
+        config = proc_config_start()
+    except:
+        widget.text_output_send.appendPlainText("** Warning: ¡Could not load config!, using defaults...")
+        config = default_config
+            
+    widget.text_host_send.setText(config['tor_host'])
+    widget.text_port_send.setText(config['tor_port'])
+    widget.text_password_send.setText(config['password'])
     
     widget.show()
+    
     sys.exit(app.exec_())
     
 if __name__ == "__main__":
