@@ -87,16 +87,16 @@
       <set>Qt::ImhNoAutoUppercase</set>
      </property>
      <property name="text">
-      <string>127.0.0.1</string>
+      <string/>
      </property>
      <property name="maxLength">
       <number>64</number>
      </property>
      <property name="cursorPosition">
-      <number>9</number>
+      <number>0</number>
      </property>
     </widget>
-    <widget class="QLineEdit" name="text_port">
+    <widget class="QLineEdit" name="text_port_send">
      <property name="geometry">
       <rect>
        <x>325</x>
@@ -112,13 +112,13 @@
       <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
      </property>
      <property name="text">
-      <string>9051</string>
+      <string/>
      </property>
      <property name="maxLength">
       <number>5</number>
      </property>
     </widget>
-    <widget class="QLabel" name="label_host">
+    <widget class="QLabel" name="label_host_send">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -169,7 +169,7 @@
       <string>Select What To Send</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_action">
+    <widget class="QLabel" name="label_action_send">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -370,7 +370,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Onion Router API Utility</string>
+    <string>App Name</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_version">
@@ -383,7 +383,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>00.00.00</string>
+    <string>ver</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -455,10 +455,15 @@
     <string>Ctrl+X</string>
    </property>
   </action>
+  <action name="action_exit_cleanup">
+   <property name="text">
+    <string>_exit_cleanup</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>text_host_send</tabstop>
-  <tabstop>text_port</tabstop>
+  <tabstop>text_port_send</tabstop>
   <tabstop>combo_action_send</tabstop>
   <tabstop>text_password_send</tabstop>
   <tabstop>button_send</tabstop>
@@ -508,6 +513,22 @@
     <hint type="sourcelabel">
      <x>382</x>
      <y>434</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_tor_util</sender>
+   <signal>destroyed()</signal>
+   <receiver>action_exit_cleanup</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>209</x>
+     <y>229</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
