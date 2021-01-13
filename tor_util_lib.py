@@ -7,6 +7,8 @@ Common Library
 
 import os
 import json
+import socket
+import stem
 
 conf_file      = os.getenv("HOME") + "/.config/tor_util/config"
 default_config = {
@@ -14,6 +16,8 @@ default_config = {
     'tor_port' : "9051",
     'password' : ""
 }
+
+send_commands = [ "New IP" ]
 
 def read_config(file_name):
     '''Loads JSON config returns dict{} with keys'''
@@ -28,7 +32,7 @@ def read_config(file_name):
 def write_config(file_name,config_obj):
     '''write config to JSON file'''
     
-    contents = json.dumps(config_obj,indent=4)
+    contents  = json.dumps(config_obj,indent=4)
     contents += "\n"
     
     file_obj = open(file_name, "w")
@@ -40,7 +44,7 @@ def proc_config_start():
     conf_dir = os.path.dirname(conf_file)
     
     # check if config directory exists. If not make it, and then return defaults:
-    if os.path.isdir(conf_dir) == False and os.path.exists(conf_dir) == True:
+    if os.path.isdir(conf_dir)    == False and os.path.exists(conf_dir) == True:
         raise "BadConfDir"
     elif os.path.exists(conf_dir) == False:
         os.mkdir(conf_dir)
@@ -48,7 +52,7 @@ def proc_config_start():
         return default_config
         
     # check if config file exists, if not make it then return defaults:
-    if os.path.isfile(conf_file) == False and os.path.exists(conf_file) == True:
+    if os.path.isfile(conf_file)   == False and os.path.exists(conf_file) == True:
         raise "BadConfFile"
     elif os.path.exists(conf_file) == False:
         write_config(conf_file,default_config)
@@ -62,3 +66,16 @@ def proc_config_start():
             loaded_config[item] = default_config['item']
 
     return loaded_config
+
+def send_tor_new_ip(host,port,password=""):
+    '''Send a NEWNYM command for a new IP address over TOR. Needs host, port, and optionally password'''
+    # build the command.
+    auth_string = "AUTHENTICATE " + '\"' + password + '\"' + "\n"
+    command     = "SIGNAL NEWNYM\n"
+    
+    status
+    connection = socket.create_connection((host,port))
+    
+    #clean up
+    socket.close()
+    
