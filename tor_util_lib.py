@@ -84,18 +84,18 @@ def send_tor_new_ip(command,host,port,password=""):
     try:
         control_obj.connect()
     except stem.SocketError:
-        output = "1 Could Not Connect to " + host + " on port " + str(port)
+        output = [("1", "Could Not Connect to " + host + " on port " + str(port) )]
         return output
     try:
         stem.connection.authenticate(control_obj,password)
     except stem.connection.IncorrectPassword:
-        output = "1 Incorrect Password, host: " + host + "port: " + str(port)
+        output = [("1", "Incorrect Password, host: " + host + " port: " + str(port) )]
         return output
         
     try:
         control_obj.send(command)
     except:
-        output = "1 Could not send command?"
+        output = [("1","Could not send command?")]
         return output
         
     message_obj    = control_obj.recv()
