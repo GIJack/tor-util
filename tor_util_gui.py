@@ -68,7 +68,6 @@ def send_action():
         return
     
     result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
-    #result = " ".join(result)
     output = ""
     for line in result:
         output += " ".join(line) + "\n"
