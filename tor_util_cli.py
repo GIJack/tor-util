@@ -7,13 +7,20 @@ Does Two Things:
 2. Generates hashed passwords for use in the torrc file
 
 TOR API Commands:
-	new_ip		Sends the NEWNYM command which gets a new IP. This
+	"New IP"		Sends the NEWNYM command which gets a new IP. This
 generates new tunnels, and with it, a new exit node that has a new IP.
+
+	"Flush DNS"		Flushes DNS cache on TOR daemon.
+
+	"Dormant Mode" \__	Turns Dormant Mode on/off. Newish feature to TOR
+	"Active Mode"  /
+    
+	"TOR Version"		Queries the TOR Daemon version
 
 Local Utilities(Commands):
 	gen_passwd_hash		Generates a password hash for use in torrc.
 
-	gen_config		Generates blank settings file
+	gen_config		Generates blank JSON settings file for this utility.
 '''
 tor_util_desc = tor_util_desc.strip()
 
