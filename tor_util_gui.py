@@ -60,6 +60,9 @@ def send_action():
     elif action == "Active Mode":
         widget.text_output_send.appendPlainText("* Restoring TOR Daemon to Active Mode...")
         command = "SIGNAL ACTIVE"
+    elif action == "TOR Version":
+        widget.text_output_send.appendPlainText("* Querying TOR Daemon Version:")
+        command = "GETINFO version"
     else:
         widget.text_output_send.appendPlainText(action + " Unsupported")
         return

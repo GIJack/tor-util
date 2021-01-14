@@ -22,7 +22,7 @@ default_config = {
     'password' : ""
 }
 
-send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode" ] # [  ] #don't work for some reason
+send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "TOR Version" ] # [  ] #don't work for some reason
 
 def read_config(file_name):
     '''Loads JSON config returns dict{} with keys'''
