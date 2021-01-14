@@ -68,7 +68,11 @@ def send_action():
         return
     
     result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
-    widget.text_output_send.appendPlainText(result)
+    #result = " ".join(result)
+    output = ""
+    for line in result:
+        output += " ".join(line) + "\n"
+    widget.text_output_send.appendPlainText(output)
     
 def clear_output_boxes():
     '''Clear Output on button press'''

@@ -103,7 +103,7 @@ def send_tor_new_ip(command,host,port,password=""):
     #    output_code = 0
     #else:
     #    output_code = 2
-    output = message_obj.raw_content()
+    output = message_obj.content()
     
     control_obj.close()
     
