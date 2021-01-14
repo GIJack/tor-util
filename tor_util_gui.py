@@ -17,6 +17,7 @@ from tor_util_lib import *
 import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget, QApplication
+#from PyQt5.QtCore import QObject, QRunnable, QThreadPool,pyqtSlot, pyqtSignal
 
 def populate_send_options():
     '''populate the action combo box'''
@@ -66,7 +67,7 @@ def send_action():
     else:
         widget.text_output_send.appendPlainText(action + " Unsupported")
         return
-    
+
     result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
     output = ""
     for line in result:
