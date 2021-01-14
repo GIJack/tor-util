@@ -74,6 +74,7 @@ def clear_output_boxes():
     '''Clear Output on button press'''
     widget.text_output_send.setPlainText('')
     widget.text_output_hash.setPlainText('')
+    widget.text_password_hash.setText('')
 
 def main():
     app = QApplication(sys.argv)
