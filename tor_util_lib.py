@@ -13,7 +13,6 @@ import json
 import socket
 import stem
 import stem.connection
-#from stem.control import Controller
 
 conf_file      = os.getenv("HOME") + "/.config/tor_util/config"
 default_config = {
@@ -84,12 +83,12 @@ def send_tor_new_ip(command,host,port,password=""):
     try:
         control_obj.connect()
     except stem.SocketError:
-        output = [("1", "Could Not Connect to " + host + " on port " + str(port) )]
+        output = [("1", "Could Not Connec!",("host: "  + host, " port: " + str(port) )]
         return output
     try:
         stem.connection.authenticate(control_obj,password)
     except stem.connection.IncorrectPassword:
-        output = [("1", "Incorrect Password, host: " + host + " port: " + str(port) )]
+        output = [("1", "Incorrect Password"),("host: "  + host, " port: " + str(port) )]
         return output
         
     try:
