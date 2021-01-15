@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.5
+Type=Application
+Name=Tor Util
+Comment=Utility for Sending The Onion Router API commands
+Icon=tor-util
+Exec=tor_util_gui.py
+# TODO: fill out for production use
+Path=
+Categories=Network
+Keywords=onion
