@@ -20,6 +20,9 @@ generates new tunnels, and with it, a new exit node that has a new IP.
 
 Local Utilities(Commands):
 	gen_passwd_hash		Generates a password hash for use in torrc.
+    
+    touch_config		Quit after generating config. useful for first
+run
 '''
 tor_util_desc = tor_util_desc.strip()
 
@@ -84,7 +87,10 @@ def main():
     except:
         warn("Could not load config, using defaults...")
         config = default_config
-        
+    # If we are just generating the config, leave it along
+    if args.command == "touch_config":
+       sys.exit(0)
+
     ## proc options:
     #Check password
     if args.password_prompt == True:
