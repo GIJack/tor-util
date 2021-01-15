@@ -83,7 +83,7 @@ def send_tor_new_ip(command,host,port,password=""):
     try:
         control_obj.connect()
     except stem.SocketError:
-        output = [("1", "Could Not Connec!",("host: "  + host, " port: " + str(port) )]
+        output = [("1", "Could Not Connect!"),("host: "  + host, " port: " + str(port) )]
         return output
     try:
         stem.connection.authenticate(control_obj,password)
