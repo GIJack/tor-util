@@ -16,6 +16,7 @@ GUI
 
 Command Line
 ------------
+```
 TOR API Commands:
 	new_ip		Sends the NEWNYM command which gets a new IP. This
 generates new tunnels, and with it, a new exit node that has a new IP.
@@ -49,4 +50,4 @@ Network:
 
   -h HOST, --host HOST  Address/hostname of TOR daemon
   -p PORT, --port PORT  Port of TOR daemon
-
+```
