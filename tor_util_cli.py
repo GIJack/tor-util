@@ -21,7 +21,7 @@ generates new tunnels, and with it, a new exit node that has a new IP.
 Local Utilities(Commands):
 	gen_passwd_hash		Generates a password hash for use in torrc.
     
-    touch_config		Quit after generating config. useful for first
+	touch_config		Quit after generating config. useful for first
 run
 '''
 tor_util_desc = tor_util_desc.strip()

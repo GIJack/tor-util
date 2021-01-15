@@ -53,6 +53,7 @@ def proc_config_start():
     elif os.path.exists(conf_dir) == False:
         os.mkdir(conf_dir)
         write_config(conf_file,default_config)
+        os.chmod(conf_file, 0o600)
         return default_config
         
     # check if config file exists, if not make it then return defaults:
@@ -60,6 +61,7 @@ def proc_config_start():
         raise "BadConfFile"
     elif os.path.exists(conf_file) == False:
         write_config(conf_file,default_config)
+        os.chmod(conf_file, 0o600)
         return default_config
         
     # load config
