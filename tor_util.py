@@ -7,6 +7,9 @@ Does Two Things:
 1. Send commands to the API over the network
 2. Generates hashed passwords for use in the torrc file
 
+API  Host,  Port,  and Password as specified as a JSON file in 
+~/.config/tor_util/config, or can be overridden with switches
+
 TOR API Commands:
 	new_ip		Sends the NEWNYM command which gets a new IP. This
 generates new tunnels, and with it, a new exit node that has a new IP.
