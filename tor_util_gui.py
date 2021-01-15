@@ -51,7 +51,6 @@ def send_action():
     if action == "New IP":
        command = "SIGNAL NEWNYM"
        widget.text_output_send.appendPlainText("* Sending New IP Request...")
-
     elif action == "Flush DNS":
         widget.text_output_send.appendPlainText("* Clearing DNS Cache...")
         command = "SIGNAL CLEARDNSCACHE"
