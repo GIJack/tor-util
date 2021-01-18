@@ -70,7 +70,14 @@ def send_action():
     result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
     output = ""
     for line in result:
-        output += " ".join(line) + "\n"
+        error_code = int(line[0])
+        output += " ".join(line[1:])
+        output  = output.strip("-")
+        output  = output.strip()
+    if error_code != 250:
+        output = "ERROR: " + output
+
+    output += "\n"
     widget.text_output_send.appendPlainText(output)
     
 def clear_output_boxes():
