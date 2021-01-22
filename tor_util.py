@@ -102,9 +102,14 @@ def main():
        config['password'] = args.password
     #host and port
     if args.host != None:
-        config['host'] = args.host
+        config['tor_host'] = args.host
     if args.port != None:
-        config['port'] = args.port
+        config['tor_port'] = args.port
+
+    ## Sanity checking
+    #check to make sure port is valid:
+    if check_port(config['tor_port']) != True:
+        exit_with_error(2,"Invalid port: " + str(config['tor_port']))
 
     # commands
     command = ""
@@ -117,7 +122,7 @@ def main():
         except:
             exit_with_error(1,"Could not generate password hash")    
     elif args.command == "new_ip":
-        message("Sending New IP Request..")
+        message("Sending New IP Request...")
         command = "SIGNAL NEWNYM"
     elif args.command == "flush_dns":
         message("Clearing DNS Cache...")

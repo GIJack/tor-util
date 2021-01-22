@@ -73,6 +73,17 @@ def proc_config_start():
 
     return loaded_config
 
+def check_port(port):
+    '''Check if port is a valid TCP Port number. Takes one parameter, the port, returns bool(True/False)'''
+    # ports are intergers
+    if type(port) != int:
+        return False
+    #between 1 and 65535, or 2^16 - 1
+    if 1 <= port <= 65535:
+        return True
+    else:
+        return False
+    
 def send_tor_new_ip(command,host,port,password=""):
     '''Send a NEWNYM command for a new IP address over TOR. Needs host, port, and optionally password. returns tupple with error code and message'''
     '''error code: 0 is success, everything else is fail. Message is for updating status'''
