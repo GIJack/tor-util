@@ -4,10 +4,7 @@ This is a utility for controling TOR via the API
 
 Common Library
 '''
-prog_meta = {
-    'name' : "TOR API Utility",
-    'version' : "0.0.1"
-}
+
 import os
 import json
 import socket
@@ -15,6 +12,10 @@ import stem
 import stem.connection
 
 conf_file      = os.getenv("HOME") + "/.config/tor_util/config"
+prog_meta = {
+    'name' : "TOR API Utility",
+    'version' : "0.0.1"
+}
 default_config = {
     'tor_host' : "127.0.0.1",
     'tor_port' : 9051,
