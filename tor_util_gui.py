@@ -7,8 +7,18 @@ It does two things:
 1. Send commands to the API over the network
 2. Generates hashed passwords for use in the torrc file
 
-So far, the only commmand supported is NEWNYM, which generates a new
-Path, resulting in new exit node, and new IP for TOR connection
+Network Settings are stored in ~/.config/tor_util/config
+
+API Commands Available:
+New IP  - Sends SIGNAL NEWNYM, which regenerates path through the TOR
+Network, and gets a new exit node, with a new IP.
+
+Flush DNS - Sends SIGNAL CLEARDNSCACHE, which clears cached DNS lookups.
+Use with troubleshooting.
+
+Dormant Mode - Puts the TOR Daemon in dormant mode. New feature that
+reduces resource consumption.
+
 '''
 tor_util_desc = tor_util_desc.strip()
 
@@ -17,7 +27,7 @@ from tor_util_lib import *
 import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget, QApplication
-#from PyQt5.QtCore import QObject, QRunnable, QThreadPool,pyqtSlot, pyqtSignal
+from PyQt5.QtCore import QObject, QThread, QThreadPool, pyqtSlot, pyqtSignal
 
 def populate_send_options():
     '''populate the action combo box'''
@@ -42,43 +52,47 @@ def get_send_opts():
         
     return config
 
-def send_action():
+class send_action(QObject):
     '''This is what happens when send button is pressed'''
-    config = get_send_opts()
-    action = widget.combo_action_send.currentText()
+    finished = pyqtSignal()
     
-    # Do function
-    if action == "New IP":
-       command = "SIGNAL NEWNYM"
-       widget.text_output_send.appendPlainText("* Sending New IP Request...")
-    elif action == "Flush DNS":
-        widget.text_output_send.appendPlainText("* Clearing DNS Cache...")
-        command = "SIGNAL CLEARDNSCACHE"
-    elif action == "Dormant Mode":
-        widget.text_output_send.appendPlainText("* Putting TOR Daemon in Dormant Mode...")
-        command = "SIGNAL DORMANT"
-    elif action == "Active Mode":
-        widget.text_output_send.appendPlainText("* Restoring TOR Daemon to Active Mode...")
-        command = "SIGNAL ACTIVE"
-    elif action == "TOR Version":
-        widget.text_output_send.appendPlainText("* Querying TOR Daemon Version:")
-        command = "GETINFO version"
-    else:
-        widget.text_output_send.appendPlainText(action + " Unsupported")
-        return
-
-    result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
-    output = ""
-    for line in result:
-        error_code = int(line[0])
-        output += " ".join(line[1:])
-        output  = output.strip("-")
-        output  = output.strip()
-    if error_code != 250:
-        output = "ERROR: " + output
-
-    output += "\n"
-    widget.text_output_send.appendPlainText(output)
+    def run(self):
+        config = get_send_opts()
+        action = widget.combo_action_send.currentText()
+    
+        # Do function
+        if action == "New IP":
+            command = "SIGNAL NEWNYM"
+            widget.text_output_send.appendPlainText("* Sending New IP Request...")
+        elif action == "Flush DNS":
+            widget.text_output_send.appendPlainText("* Clearing DNS Cache...")
+            command = "SIGNAL CLEARDNSCACHE"
+        elif action == "Dormant Mode":
+            widget.text_output_send.appendPlainText("* Putting TOR Daemon in Dormant Mode...")
+            command = "SIGNAL DORMANT"
+        elif action == "Active Mode":
+            widget.text_output_send.appendPlainText("* Restoring TOR Daemon to Active Mode...")
+            command = "SIGNAL ACTIVE"
+        elif action == "TOR Version":
+            widget.text_output_send.appendPlainText("* Querying TOR Daemon Version:")
+            command = "GETINFO version"
+        else:
+            widget.text_output_send.appendPlainText(action + " Unsupported")
+            return
+        result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
+        output = ""
+    
+        for line in result:
+            error_code = int(line[0])
+            output += " ".join(line[1:])
+            output  = output.strip("-")
+            output  = output.strip()
+        if error_code != 250:
+            output = "ERROR: " + output
+        
+        output += "\n"
+        widget.text_output_send.appendPlainText(output)
+        self.finished.emit()
     
 def clear_output_boxes():
     '''Clear Output on button press'''
@@ -93,8 +107,17 @@ def main():
     global widget
     widget = uic.loadUi("tor-util.ui")
     
+    # thread
+    widget.thread = QThread()
+    widget.send_worker = send_action()
+    widget.send_worker.moveToThread(widget.thread)
+    widget.thread.started.connect(widget.send_worker.run)
+    widget.send_worker.finished.connect(widget.thread.quit)
+    widget.send_worker.finished.connect(widget.send_worker.deleteLater)
+    widget.send_worker.finished.connect(widget.thread.deleteLater)
+    
     # Button Presses go here:
-    widget.action_api_send.triggered.connect(send_action)
+    widget.action_api_send.triggered.connect(widget.thread.start)
     widget.action_clear_display.triggered.connect(clear_output_boxes)
     
     # Misc effects:
