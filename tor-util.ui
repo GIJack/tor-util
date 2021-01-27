@@ -34,10 +34,6 @@
   <property name="windowTitle">
    <string>TOR(The Onion Router) Utility</string>
   </property>
-  <property name="windowIcon">
-   <iconset theme="tor-util">
-    <normaloff>.</normaloff>.</iconset>
-  </property>
   <widget class="QTabWidget" name="tabwidget_main">
    <property name="geometry">
     <rect>
