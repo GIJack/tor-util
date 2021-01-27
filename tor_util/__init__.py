@@ -12,7 +12,7 @@ import stem
 import stem.connection
 
 class common:
-    conf_file      = os.getenv("HOME") + "/.config/tor_util/config"
+    conf_file = os.getenv("HOME") + "/.config/tor_util/config"
     prog_meta = {
         'name' : "TOR API Utility",
         'version' : "0.1.0"
