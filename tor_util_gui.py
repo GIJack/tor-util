@@ -213,7 +213,7 @@ def main():
     # Main Window
     global widget
     ui_file = "tor-util.ui"
-    if os.path.exists(ui_file) != True:
+    if "usr/" in os.path.realpath(__file__) and "bin/" in os.path.realpath(__file__):
         ui_file = "/usr/share/tor-util/tor-util.ui"
     
     widget = uic.loadUi(ui_file)
