@@ -13,7 +13,7 @@ for size in size_list:
     in_file = 'desktop/tor-util-' + size + '.png'
     os.mkdir(subdir)
     shutil.copy(in_file, subdir + '/tor-util.png')
-    out_dir = 'share/icons/hicolor/' + size + "x" + size + "/"
+    out_dir = 'share/icons/hicolor/' + size + "x" + size + "/apps/"
     entry = (out_dir, [subdir + '/tor-util.png'] )
     icon_files.append(entry)
 
