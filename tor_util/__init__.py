@@ -13,6 +13,8 @@ import stem.connection
 
 class common:
     conf_file = os.getenv("HOME") + "/.config/tor_util/config"
+    if "win" in sys.platform:
+        conf_file = os.getenv("APPDATA") + "/tor_util/config"
     prog_meta = {
         'name' : "TOR API Utility",
         'version' : "0.1.0"
