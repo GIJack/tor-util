@@ -35,7 +35,8 @@
    <string>TOR(The Onion Router) Utility</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tor-util"/>
+   <iconset theme="tor-util">
+    <normaloff>.</normaloff>.</iconset>
   </property>
   <widget class="QTabWidget" name="tabwidget_main">
    <property name="geometry">
@@ -216,8 +217,7 @@
       <string>&amp;Send</string>
      </property>
      <property name="icon">
-      <iconset theme="media-playback-start">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset theme="media-playback-start"/>
      </property>
     </widget>
     <widget class="QPlainTextEdit" name="text_output_send">
@@ -430,8 +430,7 @@
     <string>C&amp;lear</string>
    </property>
    <property name="icon">
-    <iconset theme="editclear">
-     <normaloff>.</normaloff>.</iconset>
+    <iconset theme="editclear"/>
    </property>
    <property name="flat">
     <bool>false</bool>
