@@ -22,7 +22,7 @@ reduces resource consumption.
 '''
 tor_util_desc = tor_util_desc.strip()
 
-from tor_util_lib import *
+from tor_util import *
 
 import traceback
 import sys
