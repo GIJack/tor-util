@@ -9,7 +9,7 @@ setup(name='tor-utl',
       url='https://github.com/GIJack/tor-util',
       packages=['tor-util'],
       license='GPLv3',
-      scripts=['bin/tor_util.py','bin/tor_util_gui.py'],
+      scripts=['tor-util/bin/tor_util.py','tor-util/bin/tor_util_gui.py'],
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',
@@ -20,6 +20,6 @@ setup(name='tor-utl',
           'Operating System :: POSIX',
           'Programming Language :: Python',
           'Topic :: Utilities',
-      ]
+      ],
       install_requires = ['PyQt5', 'stem']
      )
