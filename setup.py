@@ -29,6 +29,14 @@ elif 'darwin' in sys.platform:
 else:
     raise TypeError("OS " + sys.platform + " not supported!")
 
+#read from requirements.txt
+f = open('requirements.txt','r')
+dep_list = []
+for item in f.readlines():
+    item = item.rstrip('\n')
+    dep_list.append(item)
+f.close()
+
 setup(name='tor_util',
       version='0.1.0',
       description='Utility for controling TOR via the API',
@@ -51,7 +59,7 @@ setup(name='tor_util',
           'Topic :: Utilities',
           'Topic :: System :: Networking',
       ],
-      install_requires = ['PyQt5', 'stem']
+      install_requires = dep_list
      )
 
 shutil.rmtree('icons')
