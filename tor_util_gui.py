@@ -22,7 +22,7 @@ reduces resource consumption.
 '''
 tor_util_desc = tor_util_desc.strip()
 
-from tor_util import *
+from tor_util import common as lib
 
 import traceback
 import sys
@@ -106,14 +106,14 @@ class Worker(QRunnable):
 
 def populate_send_options():
     '''populate the action combo box'''
-    for item in send_commands:
+    for item in lib.send_commands:
        widget.combo_action_send.addItem(item)
 
 
 def final_cleanup():
     '''Cleanup before exit'''
     config = get_send_opts()
-    write_config(conf_file, config)
+    lib.write_config(lib.conf_file, config)
 
 
 def get_send_opts():
@@ -125,7 +125,7 @@ def get_send_opts():
     try:
         config['tor_port'] = int( widget.text_port_send.text() )
     except:
-        config['tor_port'] = default_config['tor_port']
+        config['tor_port'] = lib.default_config['tor_port']
 
     return config
 
@@ -160,7 +160,7 @@ def send_action(progress_callback):
     progress_callback.emit(output)
 
 
-    result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
+    result = lib.send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
     output = ""
 
     for line in result:
@@ -220,16 +220,16 @@ def main():
     widget.action_exit_cleanup.triggered.connect(final_cleanup)
 
     # Initialization
-    widget.label_name.setText(prog_meta['name'])
-    widget.label_version.setText(prog_meta['version'])
+    widget.label_name.setText(lib.prog_meta['name'])
+    widget.label_version.setText(lib.prog_meta['version'])
     populate_send_options()
 
     # Load Config
     try:
-        config = proc_config_start()
+        config = lib.proc_config_start()
     except:
         widget.text_output_send.appendPlainText("** Warning: ¡Could not load config!, using defaults...")
-        config = default_config
+        config = lib.default_config
 
     widget.text_host_send.setText(config['tor_host'])
     widget.text_port_send.setText(str(config['tor_port']))

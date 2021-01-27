@@ -29,7 +29,7 @@ run
 '''
 tor_util_desc = tor_util_desc.strip()
 
-from tor_util import *
+from tor_util import common as lib
 
 import argparse
 import sys
@@ -81,15 +81,15 @@ def main():
     
     # Check version. Don't touch anything, just exit when done
     if args.version == True:
-        message("VERSION: " + prog_meta["name"] + "\t" + prog_meta["version"])
+        message("VERSION: " + lib.prog_meta["name"] + "\t" + lib.prog_meta["version"])
         sys.exit(4)
     
     # Load Config
     try:
-        config = proc_config_start()
+        config = lib.proc_config_start()
     except:
         warn("Could not load config, using defaults...")
-        config = default_config
+        config = lib.default_config
     # If we are just generating the config, leave it along
     if args.command == "touch_config":
        sys.exit(0)
@@ -108,7 +108,7 @@ def main():
 
     ## Sanity checking
     #check to make sure port is valid:
-    if check_port(config['tor_port']) != True:
+    if lib.check_port(config['tor_port']) != True:
         exit_with_error(2,"Invalid port: " + str(config['tor_port']))
 
     # commands
@@ -118,6 +118,7 @@ def main():
     elif args.command == "gen_passwd_hash":
         message("Generating hash, paste this in torrc:")
         try:
+            exit_with_error(4,"Not implemented yet!")
             format_password_hash(config['password'])
         except:
             exit_with_error(1,"Could not generate password hash")    
@@ -139,7 +140,7 @@ def main():
     else:
         exit_with_error(2,"Command " + args.command + " is not supported.")
 
-    result = send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
+    result = lib.send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
     output = ""
     return_code = 0
     for line in result:
