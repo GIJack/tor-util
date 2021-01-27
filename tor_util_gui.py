@@ -30,6 +30,7 @@ from tor_util import common as lib
 
 import traceback
 import sys
+import os
 
 from PyQt5 import uic
 from PyQt5.QtGui import *
@@ -211,8 +212,11 @@ def main():
 
     # Main Window
     global widget
-    sys.path.append('/usr/share/tor-util/')
-    widget = uic.loadUi("tor-util.ui")
+    ui_file = "tor-util.ui"
+    if os.path.exists(ui_file) != True:
+        ui_file = "/usr/share/tor-util/tor-util.ui"
+    
+    widget = uic.loadUi(ui_file)
 
     # thread
     widget.threadpool = QThreadPool()
