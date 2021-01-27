@@ -1,3 +1,0 @@
-{
-    "files": ["tor_util_cli.py","tor_util_gui.py","tor_util_lib.py","tor-util.ui"]
-}
