@@ -5,7 +5,7 @@ import shutil
 
 added_files = []
 size_list = ['32', '48', '64', '72', '96', '128', '256', '512']
-if 'linux' in sys.platform:
+if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
     # Generate directory for icons
     os.mkdir('icons')
 
@@ -22,6 +22,12 @@ if 'linux' in sys.platform:
 
     added_files.append(('share/tor-util/'    , ['tor-util.ui']))
     added_files.append(('share/applications/', ['desktop/tor_util.desktop']))
+elif 'win' in sys.platform:
+    raise TypeError("Windows support not written yet")
+elif 'darwin' in sys.platform:
+    raise TypeError("Apple support not written yet")
+else:
+    raise TypeError("OS " + sys.platform + " not supported!")
 
 setup(name='tor_util',
       version='0.1.0',
