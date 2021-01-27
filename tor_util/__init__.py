@@ -15,7 +15,7 @@ class common:
     conf_file      = os.getenv("HOME") + "/.config/tor_util/config"
     prog_meta = {
         'name' : "TOR API Utility",
-        'version' : "0.0.1"
+        'version' : "0.1.0"
     }
     default_config = {
         'tor_host' : "127.0.0.1",
