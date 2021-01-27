@@ -9,7 +9,6 @@ setup(name='tor_util',
       url='https://github.com/GIJack/tor-util',
       packages=['tor_util'],
       license='GPLv3',
-      package_dir = {'': 'libs'},
       scripts=['progs/tor_util.py', 'progs/tor_util_gui.py'],
       classifiers=[
           'Development Status :: 4 - Beta',
