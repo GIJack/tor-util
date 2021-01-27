@@ -9,7 +9,7 @@ setup(name='tor_util',
       url='https://github.com/GIJack/tor-util',
       packages=['tor_util'],
       license='GPLv3',
-      scripts=['progs/tor_util.py', 'progs/tor_util_gui.py'],
+      scripts=['tor_util.py', 'tor_util_gui.py'],
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',
