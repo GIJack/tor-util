@@ -1,15 +1,15 @@
 from setuptools import setup
 import os
 
-setup(name='tor-utl',
+setup(name='tor_util',
       version='0.1.0',
       description='Utility for controling TOR via the API',
       author='GI Jack',
       author_email='GI_Jack@hackermail.com',
       url='https://github.com/GIJack/tor-util',
-      packages=['tor-util'],
+      packages=['tor_util'],
       license='GPLv3',
-      scripts=['tor-util/bin/tor_util.py','tor-util/bin/tor_util_gui.py'],
+      scripts=['tor_util/bin/tor_util.py','tor_util/bin/tor_util_gui.py'],
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',
