@@ -427,7 +427,7 @@
     <string>C&amp;lear</string>
    </property>
    <property name="icon">
-    <iconset theme="editclear"/>
+    <iconset theme="edit-clear"/>
    </property>
    <property name="flat">
     <bool>false</bool>
