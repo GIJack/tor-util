@@ -19,6 +19,10 @@ Use with troubleshooting.
 Dormant Mode - Puts the TOR Daemon in dormant mode. New feature that
 reduces resource consumption.
 
+Active Mode - Revives TOR from dormant mode.
+
+TOR Version - Query the daemon for version.
+
 '''
 tor_util_desc = tor_util_desc.strip()
 
