@@ -211,6 +211,7 @@ def main():
 
     # Main Window
     global widget
+    sys.path.append('/usr/share/tor-util/')
     widget = uic.loadUi("tor-util.ui")
 
     # thread

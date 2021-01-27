@@ -10,6 +10,7 @@ setup(name='tor_util',
       packages=['tor_util'],
       license='GPLv3',
       scripts=['tor_util_cli.py', 'tor_util_gui.py'],
+      data_files = [('share/tor-util',['tor-util.ui'])],
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',
