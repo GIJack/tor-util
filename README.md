@@ -4,11 +4,16 @@ Utility for TOR(The Onion ROUTER) such as requesting a new IP, or generating API
 Writen in python using Qt5, with accompanying CLI app, this app is for sending
 API calls over the network to a running TOR daemon.
 
-This app also can generate hashed passwords for use with the daemon.
+This app also can generate hashed passwords for use with the daemon torrc file.
 
-Status: Sending commands works, but freezes on timeout failures.
+To use the Control API, set HashedControlPassword and ControlPort in torrc on
+the daemon. ControlPort is just a TCP port to listen on. HashedControlPassword
+can be generated on the "Generate Password" tab.
 
-WIP: password hashing
+Status: Sending commands works, both CLI and GUI. There is a .desktop file, 
+icons, python setup package
+
+Generate Password is not implemented yet
 
 GUI
 ---
