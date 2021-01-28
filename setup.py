@@ -61,5 +61,11 @@ setup(name='tor_util',
       ],
       install_requires = dep_list
      )
-
-shutil.rmtree('icons')
+if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
+    shutil.rmtree('icons')
+elif 'win' in sys.platform:
+    raise TypeError("Windows support not written yet")
+elif 'darwin' in sys.platform:
+    raise TypeError("Apple support not written yet")
+else:
+    raise TypeError("OS " + sys.platform + " not supported!")
