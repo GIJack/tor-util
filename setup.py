@@ -61,6 +61,7 @@ setup(name='tor_util',
       ],
       install_requires = dep_list
      )
+# Clean Up temp files
 if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
     shutil.rmtree('icons')
 elif 'win' in sys.platform:
