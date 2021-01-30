@@ -17,7 +17,7 @@ class common:
     if "win" in sys.platform:
         conf_file = os.getenv("APPDATA") + "/tor_util/config"
     prog_meta = {
-        'name' : "TOR API Utility",
+        'name'    : "TOR API Utility",
         'version' : "0.1.0"
     }
     default_config = {
