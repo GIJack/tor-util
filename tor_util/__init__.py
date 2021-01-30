@@ -115,12 +115,8 @@ class common:
             output = [("1","Could not send command?")]
             return output
         
-        message_obj    = control_obj.recv()
-        #if message_obj.is_ok() == True:
-        #    output_code = 0
-        #else:
-        #    output_code = 2
-        output = message_obj.content()
+        message_obj = control_obj.recv()
+        output      = message_obj.content()
     
         control_obj.close()
     
