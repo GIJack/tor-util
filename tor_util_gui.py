@@ -26,7 +26,7 @@ TOR Version - Query the daemon for version.
 '''
 tor_util_desc = tor_util_desc.strip()
 
-send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "TOR Version" ]
+send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "Status", "TOR Version" ]
 
 from tor_util import common as lib
 
@@ -160,6 +160,10 @@ def send_action(progress_callback):
     elif action == "TOR Version":
         output = "* Querying TOR Daemon Version:"
         command = "GETINFO version"
+    elif action == "Status":
+        output = "* Checking Status:"
+        #command = "GETINFO status/bootstrap-phase"
+        # multi command
     else:
         output = action + " Unsupported\n"
         return
@@ -167,7 +171,7 @@ def send_action(progress_callback):
     progress_callback.emit(output)
 
 
-    result = lib.send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
+    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
     output = ""
 
     for line in result:

@@ -87,8 +87,8 @@ class common:
         else:
             return False
     
-    def send_tor_new_ip(command,host,port,password=""):
-        '''Send a NEWNYM command for a new IP address over TOR. Needs host, port, and optionally password. returns tupple with error code and message'''
+    def send_tor_command(command,host,port,password=""):
+        '''Send a command tor TOR daremon. Needs command, host, port, and optionally password. returns tupple with error code and message'''
         '''error code: 0 is success, everything else is fail. Message is for updating status'''
         # build the command.
         auth_string = "AUTHENTICATE " + '\"' + password + '\"' + "\n"
