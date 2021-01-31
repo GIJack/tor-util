@@ -26,8 +26,6 @@ class common:
         'password' : ""
     }
 
-    send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "TOR Version" ]
-
     def read_config(file_name):
         '''Loads JSON config returns dict{} with keys'''
     

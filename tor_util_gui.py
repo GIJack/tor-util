@@ -26,6 +26,8 @@ TOR Version - Query the daemon for version.
 '''
 tor_util_desc = tor_util_desc.strip()
 
+send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "TOR Version" ]
+
 from tor_util import common as lib
 
 import traceback
@@ -111,7 +113,7 @@ class Worker(QRunnable):
 
 def populate_send_options():
     '''populate the action combo box'''
-    for item in lib.send_commands:
+    for item in send_commands:
        widget.combo_action_send.addItem(item)
 
 
