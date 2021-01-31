@@ -8,7 +8,6 @@ Common Library
 import os
 import sys
 import json
-import socket
 import stem
 import stem.connection
 
@@ -118,4 +117,45 @@ class common:
     
         control_obj.close()
     
+        return output
+        
+    def tor_daemon_status(host,port,password=""):
+        '''Run several commands to determine status of router. returns list object'''
+        # build the command.
+        auth_string = "AUTHENTICATE " + '\"' + password + '\"' + "\n"
+        output = ""
+
+        # Set up the control object
+        control_obj = stem.socket.ControlPort(address=host, port=port, connect=False)
+        try:
+            control_obj.connect()
+        except stem.SocketError:
+            output = [("1", "Could Not Connect!")]
+            return output
+        try:
+            stem.connection.authenticate(control_obj,password)
+        except stem.connection.IncorrectPassword:
+            output = [("1", "Incorrect Password")]
+            return output
+        
+        command_list = { "Circut Status:":"GETINFO status/circuit-established", "Directory Status:":"GETINFO status/enough-dir-info", "Descriptor Status:":"GETINFO status/good-server-descriptor", "Bootstrap:":"GETINFO status/bootstrap-phase" }
+
+        # Commands
+        output = []
+        for item in command_list:
+            command = command_list[item]
+        
+            try:
+                control_obj.send(command)
+            except:
+                output.append( ("1","Could not send " + command + " command") )
+                continue
+            
+            message_obj = control_obj.recv()
+            output.append( ("250","* " + item) )
+            raw_output = message_obj.content()
+            for line in raw_output:
+                output.append(line)
+    
+        control_obj.close()
         return output

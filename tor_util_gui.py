@@ -26,7 +26,7 @@ TOR Version - Query the daemon for version.
 '''
 tor_util_desc = tor_util_desc.strip()
 
-send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "Status", "TOR Version" ]
+send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "Daemon Status", "TOR Version" ]
 
 from tor_util import common as lib
 
@@ -160,28 +160,35 @@ def send_action(progress_callback):
     elif action == "TOR Version":
         output = "* Querying TOR Daemon Version:"
         command = "GETINFO version"
-    elif action == "Status":
-        output = "* Checking Status:"
-        #command = "GETINFO status/bootstrap-phase"
-        # multi command
+    elif action == "Daemon Status":
+        output = "** Checking Status:"
     else:
         output = action + " Unsupported\n"
         return
 
     progress_callback.emit(output)
 
-
-    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
     output = ""
-
+    
+    if action == "Daemon Status":
+        result = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
+    else:
+        result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
     for line in result:
         error_code = int(line[0])
-        output += " ".join(line[1:])
-        output  = output.strip("-")
-        output  = output.strip()
-    if error_code != 250:
-        output = "ERROR: " + output
-
+        line = line[-1]
+        if error_code != 250:
+            output += "ERROR: " + line + "\n"
+        else:
+            if "=" in line:
+                split_line = line.split(" ")
+                for line_item in split_line:
+                    line_item = line_item.split("=")
+                    if len(line_item) == 1:
+                        continue
+                    output += line_item[0] + ":\t" + line_item[1] + "\n"
+            else:
+                output += line + "\n"
     return output
 
 

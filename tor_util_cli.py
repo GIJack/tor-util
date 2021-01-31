@@ -137,22 +137,37 @@ def main():
     elif args.command == "tor_version":
         message("Restoring TOR Daemon to Active Mode...")
         command = "GETINFO version"
+    elif args.command == "daemon_status":
+        message("Checking Daemon Status...")
     else:
         exit_with_error(2,"Command " + args.command + " is not supported.")
 
-    result = lib.send_tor_new_ip(command,config['tor_host'],config['tor_port'],config['password'])
-    output = ""
-    return_code = 0
-    for line in result:
-        return_code = int(line[0])
-        output     += " ".join(line[1:])
-    output = output.strip()
+    if args.command == "daemon_status":
+        result = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
+    else:
+        result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
 
-    if return_code == 250:
-        print(output)
+    errors_count = 0
+    for line in result:
+        error_code = int(line[0])
+        line = line[-1]
+        if error_code != 250:
+            errors_count += 1
+            softerr(line + "\n")
+        else:
+            if "=" in line:
+                split_line = line.split(" ")
+                for line_item in split_line:
+                    line_item = line_item.split("=")
+                    if len(line_item) == 1:
+                        continue
+                    print( line_item[0] + ":\t" + line_item[1])
+            else:
+                print(line)
+
+    if errors_count == 0:
         sys.exit(0)
     else:
-        softerr(output)
         sys.exit(1)
     
 if __name__ == "__main__":
