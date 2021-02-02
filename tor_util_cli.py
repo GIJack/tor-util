@@ -19,6 +19,8 @@ generates new tunnels, and with it, a new exit node that has a new IP.
 	dormant_mode \__	Turns Dormant Mode on/off. Newish feature to TOR
 	active_mode  /
     
+    daemon_stauts		Checks operational status of the TOR Daemon.
+    
 	tor_version		Queries the TOR Daemon version
 
 Local Utilities(Commands):

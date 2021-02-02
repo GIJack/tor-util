@@ -21,6 +21,8 @@ reduces resource consumption.
 
 Active Mode - Revives TOR from dormant mode.
 
+Daemon Status - Checks bootstrapping and availability of the network.
+
 TOR Version - Query the daemon for version.
 
 '''
