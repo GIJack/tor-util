@@ -23,12 +23,10 @@ Active Mode - Revives TOR from dormant mode.
 
 Daemon Status - Checks bootstrapping and availability of the network.
 
-TOR Version - Query the daemon for version.
-
 '''
 tor_util_desc = tor_util_desc.strip()
 
-send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "Daemon Status", "TOR Version" ]
+send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "Daemon Status" ]
 
 from tor_util import common as lib
 
@@ -170,8 +168,7 @@ def send_action(progress_callback):
 
     progress_callback.emit(output)
 
-    output = ""
-    
+    output = ""    
     if action == "Daemon Status":
         result = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
     else:
@@ -188,7 +185,8 @@ def send_action(progress_callback):
                     line_item = line_item.split("=")
                     if len(line_item) == 1:
                         continue
-                    output += line_item[0] + ":\t" + line_item[1] + "\n"
+                    line_len = len(line_item[0])
+                    output += line_item[0] + ":\t".expandtabs(5) + line_item[1] + "\n"
             else:
                 output += line + "\n"
     return output

@@ -19,9 +19,7 @@ generates new tunnels, and with it, a new exit node that has a new IP.
 	dormant_mode \__	Turns Dormant Mode on/off. Newish feature to TOR
 	active_mode  /
     
-    daemon_stauts		Checks operational status of the TOR Daemon.
-    
-	tor_version		Queries the TOR Daemon version
+    daemon_status		Checks operational status of the TOR Daemon.
 
 Local Utilities(Commands):
 	gen_passwd_hash		Generates a password hash for use in torrc.
@@ -136,9 +134,6 @@ def main():
     elif args.command == "active_mode":
         message("Restoring TOR Daemon to Active Mode...")
         command = "SIGNAL ACTIVE"
-    elif args.command == "tor_version":
-        message("Restoring TOR Daemon to Active Mode...")
-        command = "GETINFO version"
     elif args.command == "daemon_status":
         message("Checking Daemon Status...")
     else:
@@ -150,6 +145,8 @@ def main():
         result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
 
     errors_count = 0
+    # characters of left column for output, output data
+    col = 35
     for line in result:
         error_code = int(line[0])
         line = line[-1]
@@ -163,7 +160,8 @@ def main():
                     line_item = line_item.split("=")
                     if len(line_item) == 1:
                         continue
-                    print( line_item[0] + ":\t" + line_item[1])
+                    lin_len = len(line_item[0])
+                    print( line_item[0] + ":\t".expandtabs(col - lin_len) + line_item[1])
             else:
                 print(line)
 

@@ -138,7 +138,7 @@ class common:
             output = [("1", "Incorrect Password")]
             return output
         
-        command_list = { "Circut Status:":"GETINFO status/circuit-established", "Directory Status:":"GETINFO status/enough-dir-info", "Descriptor Status:":"GETINFO status/good-server-descriptor", "Bootstrap:":"GETINFO status/bootstrap-phase" }
+        command_list = { "Version":"GETINFO version", "Circut Status:":"GETINFO status/circuit-established", "Directory Status:":"GETINFO status/enough-dir-info", "Descriptor Status:":"GETINFO status/good-server-descriptor", "Bootstrap:":"GETINFO status/bootstrap-phase" }
 
         # Commands
         output = []
