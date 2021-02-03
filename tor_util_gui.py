@@ -168,6 +168,7 @@ def send_action(progress_callback):
 
     progress_callback.emit(output)
 
+    col = 27
     output = ""    
     if action == "Daemon Status":
         result = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
@@ -186,7 +187,7 @@ def send_action(progress_callback):
                     if len(line_item) == 1:
                         continue
                     line_len = len(line_item[0])
-                    output += line_item[0] + ":\t".expandtabs(5) + line_item[1] + "\n"
+                    output += line_item[0] + ":\t".expandtabs(col - line_len) + line_item[1] + "\n"
             else:
                 output += line + "\n"
     return output

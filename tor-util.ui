@@ -232,6 +232,11 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>Monospace</family>
+      </font>
+     </property>
      <property name="focusPolicy">
       <enum>Qt::ClickFocus</enum>
      </property>
@@ -354,6 +359,11 @@
        <height>265</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Monospace</family>
+      </font>
+     </property>
      <property name="focusPolicy">
       <enum>Qt::ClickFocus</enum>
      </property>
@@ -427,7 +437,8 @@
     <string>C&amp;lear</string>
    </property>
    <property name="icon">
-    <iconset theme="edit-clear"/>
+    <iconset theme="edit-clear">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="flat">
     <bool>false</bool>
