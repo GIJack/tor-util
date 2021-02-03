@@ -200,10 +200,10 @@
       <enum>Qt::ClickFocus</enum>
      </property>
      <property name="toolTip">
-      <string>Set torrc options remotely via the API</string>
+      <string/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tab_send_command">
       <property name="toolTip">
@@ -362,6 +362,9 @@ Mode</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tab_misc_config">
+      <property name="toolTip">
+       <string>Set MISC torrc options in the daemon</string>
+      </property>
       <attribute name="title">
        <string>&amp;Misc Config</string>
       </attribute>
@@ -372,6 +375,14 @@ Mode</string>
       </property>
       <attribute name="title">
        <string>&amp;Console</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_logs">
+      <property name="toolTip">
+       <string>Review TOR Daemon Logs</string>
+      </property>
+      <attribute name="title">
+       <string>&amp;Logs</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tab_gen_password_hash">
