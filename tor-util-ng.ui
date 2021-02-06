@@ -205,16 +205,16 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab_send_command">
+     <widget class="QWidget" name="tab_functions">
       <property name="toolTip">
        <string>Send API Commands to TOR Router over network</string>
       </property>
       <attribute name="title">
-       <string>Send Comm&amp;and</string>
+       <string>Func&amp;tions</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="6">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="button_flush_dns">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
