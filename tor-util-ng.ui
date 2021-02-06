@@ -203,7 +203,7 @@
       <string/>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_send_command">
       <property name="toolTip">
@@ -233,7 +233,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <widget class="QRadioButton" name="radio_dormant">
+         <widget class="QRadioButton" name="radio_dormant_on">
           <property name="geometry">
            <rect>
             <x>5</x>
@@ -243,7 +243,7 @@
            </rect>
           </property>
           <property name="text">
-           <string>On</string>
+           <string>O&amp;n</string>
           </property>
          </widget>
          <widget class="QRadioButton" name="radio_dormant_off">
@@ -256,13 +256,13 @@
            </rect>
           </property>
           <property name="text">
-           <string>Off</string>
+           <string>O&amp;ff</string>
           </property>
           <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="button_dormant_mode">
           <property name="geometry">
            <rect>
             <x>65</x>
@@ -376,6 +376,21 @@ Mode</string>
       <attribute name="title">
        <string>&amp;Console</string>
       </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLineEdit" name="text_console_input"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="button_console_send">
+         <property name="text">
+          <string>&amp;Send</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QPlainTextEdit" name="text_console_output"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_logs">
       <property name="toolTip">
@@ -492,7 +507,7 @@ Mode</string>
     <string>_clear_display</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+X</string>
+    <string>Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="action_exit_cleanup">
@@ -500,14 +515,37 @@ Mode</string>
     <string>_exit_cleanup</string>
    </property>
   </action>
+  <action name="action_console_send">
+   <property name="text">
+    <string>_console_send</string>
+   </property>
+  </action>
+  <action name="action_new_ip">
+   <property name="text">
+    <string>_new_ip</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="action_daemon_status">
+   <property name="text">
+    <string>_daemon_status</string>
+   </property>
+  </action>
+  <action name="action_dormant_mode">
+   <property name="text">
+    <string>_dormant_mode</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>text_host_send</tabstop>
   <tabstop>text_port_send</tabstop>
   <tabstop>text_password_send</tabstop>
-  <tabstop>radio_dormant</tabstop>
+  <tabstop>radio_dormant_on</tabstop>
   <tabstop>radio_dormant_off</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>button_dormant_mode</tabstop>
   <tabstop>text_password_hash</tabstop>
   <tabstop>button_gen_password_hash</tabstop>
  </tabstops>
