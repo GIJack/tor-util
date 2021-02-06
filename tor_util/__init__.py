@@ -152,8 +152,9 @@ class common:
                 continue
             
             message_obj = control_obj.recv()
-            output.append( ("250","* " + item) )
             raw_output = message_obj.content()
+            if raw_output[-1][0] == "250" and raw_output[-1][-1] == "OK":
+                del(raw_output[-1])
             for line in raw_output:
                 output.append(line)
     
