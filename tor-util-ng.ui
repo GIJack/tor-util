@@ -418,7 +418,7 @@ Mode</string>
        <string>Review TOR Daemon Logs</string>
       </property>
       <attribute name="title">
-       <string>&amp;Logs</string>
+       <string>L&amp;ogs</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tab_gen_password_hash">
