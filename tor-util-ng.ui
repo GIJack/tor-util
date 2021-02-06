@@ -203,7 +203,7 @@
       <string/>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_send_command">
       <property name="toolTip">
@@ -213,17 +213,101 @@
        <string>Send Comm&amp;and</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QFrame" name="frame_dormant_mode">
+       <item row="0" column="6">
+        <widget class="QPushButton" name="pushButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>0</height>
+           <height>55</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>160</width>
+           <width>70</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Flush
+&amp;DNS</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="9">
+        <widget class="QPlainTextEdit" name="text_output_send">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Monospace</family>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="toolTip">
+          <string>Return Values From TOR Daemon</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <widget class="QPushButton" name="button_new_ip">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>55</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>Execute Command</string>
+         </property>
+         <property name="text">
+          <string>New &amp;IP</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QFrame" name="frame_dormant_mode">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>145</width>
+           <height>55</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
            <height>16777215</height>
           </size>
          </property>
@@ -267,25 +351,25 @@
            <rect>
             <x>65</x>
             <y>5</y>
-            <width>90</width>
+            <width>75</width>
             <height>45</height>
            </rect>
           </property>
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>40</height>
+            <height>0</height>
            </size>
           </property>
           <property name="text">
-           <string>&amp;Dormant
+           <string>Do&amp;rmant
 Mode</string>
           </property>
          </widget>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="pushButton">
+       <item row="0" column="5">
+        <widget class="QPushButton" name="button_daemon_status">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -296,6 +380,12 @@ Mode</string>
           <size>
            <width>0</width>
            <height>55</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="toolTip">
@@ -304,52 +394,6 @@ Mode</string>
          <property name="text">
           <string>Daemon
 &amp;Status</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="button_new_ip">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>55</height>
-          </size>
-         </property>
-         <property name="toolTip">
-          <string>Execute Command</string>
-         </property>
-         <property name="text">
-          <string>New &amp;IP</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="3">
-        <widget class="QPlainTextEdit" name="text_output_send">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <family>Monospace</family>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::ClickFocus</enum>
-         </property>
-         <property name="toolTip">
-          <string>Return Values From TOR Daemon</string>
-         </property>
-         <property name="textInteractionFlags">
-          <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
          </property>
         </widget>
        </item>
@@ -366,7 +410,7 @@ Mode</string>
        <string>Configure how TOR interacts with other nodes. Entry, Exit, and Exclude lists</string>
       </property>
       <attribute name="title">
-       <string>&amp;Nodes</string>
+       <string>Nod&amp;es</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tab_misc_config">
@@ -575,8 +619,6 @@ Mode</string>
   <tabstop>radio_dormant_on</tabstop>
   <tabstop>radio_dormant_off</tabstop>
   <tabstop>button_dormant_mode</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>button_new_ip</tabstop>
   <tabstop>text_console_input</tabstop>
   <tabstop>button_console_send</tabstop>
   <tabstop>text_console_output</tabstop>
