@@ -65,7 +65,7 @@
        <rect>
         <x>95</x>
         <y>50</y>
-        <width>225</width>
+        <width>295</width>
         <height>30</height>
        </rect>
       </property>
@@ -88,7 +88,7 @@
      <widget class="QLineEdit" name="text_host_send">
       <property name="geometry">
        <rect>
-        <x>60</x>
+        <x>95</x>
         <y>10</y>
         <width>165</width>
         <height>30</height>
@@ -132,7 +132,7 @@
      <widget class="QLabel" name="label_port_send">
       <property name="geometry">
        <rect>
-        <x>250</x>
+        <x>270</x>
         <y>10</y>
         <width>35</width>
         <height>30</height>
@@ -151,7 +151,7 @@
      <widget class="QLineEdit" name="text_port_send">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>315</x>
         <y>10</y>
         <width>75</width>
         <height>30</height>
@@ -175,7 +175,7 @@
        <rect>
         <x>10</x>
         <y>50</y>
-        <width>76</width>
+        <width>75</width>
         <height>30</height>
        </rect>
       </property>
@@ -203,7 +203,7 @@
       <string/>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_send_command">
       <property name="toolTip">
