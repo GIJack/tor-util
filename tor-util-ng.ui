@@ -203,7 +203,7 @@
       <string/>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_send_command">
       <property name="toolTip">
@@ -337,6 +337,11 @@ Mode</string>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <family>Monospace</family>
+          </font>
+         </property>
          <property name="focusPolicy">
           <enum>Qt::ClickFocus</enum>
          </property>
@@ -396,6 +401,11 @@ Mode</string>
        </item>
        <item row="1" column="0" colspan="2">
         <widget class="QPlainTextEdit" name="text_console_output">
+         <property name="font">
+          <font>
+           <family>Monospace</family>
+          </font>
+         </property>
          <property name="textInteractionFlags">
           <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
          </property>
@@ -466,6 +476,11 @@ Mode</string>
        </item>
        <item row="1" column="0" colspan="3">
         <widget class="QPlainTextEdit" name="text_output_hash">
+         <property name="font">
+          <font>
+           <family>Monospace</family>
+          </font>
+         </property>
          <property name="focusPolicy">
           <enum>Qt::ClickFocus</enum>
          </property>
