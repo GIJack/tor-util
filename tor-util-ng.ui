@@ -546,8 +546,14 @@ Mode</string>
   <tabstop>radio_dormant_on</tabstop>
   <tabstop>radio_dormant_off</tabstop>
   <tabstop>button_dormant_mode</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>button_new_ip</tabstop>
+  <tabstop>text_console_input</tabstop>
+  <tabstop>button_console_send</tabstop>
+  <tabstop>text_console_output</tabstop>
   <tabstop>text_password_hash</tabstop>
   <tabstop>button_gen_password_hash</tabstop>
+  <tabstop>button_clear</tabstop>
  </tabstops>
  <resources/>
  <connections>
