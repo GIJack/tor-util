@@ -203,7 +203,7 @@
       <string/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tab_send_command">
       <property name="toolTip">
@@ -343,6 +343,9 @@ Mode</string>
          <property name="toolTip">
           <string>Return Values From TOR Daemon</string>
          </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+         </property>
         </widget>
        </item>
       </layout>
@@ -460,6 +463,9 @@ Mode</string>
          </property>
          <property name="toolTip">
           <string>Generated Hash. Paste This in torrc</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
          </property>
         </widget>
        </item>

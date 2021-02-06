@@ -243,6 +243,9 @@
      <property name="toolTip">
       <string>Return Values From TOR Daemon</string>
      </property>
+     <property name="textInteractionFlags">
+      <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+     </property>
     </widget>
     <widget class="QLineEdit" name="text_password_send">
      <property name="geometry">
@@ -369,6 +372,9 @@
      </property>
      <property name="toolTip">
       <string>Generated Hash. Paste This in torrc</string>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
      </property>
     </widget>
    </widget>
