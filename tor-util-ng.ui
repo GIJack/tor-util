@@ -203,7 +203,7 @@
       <string/>
      </property>
      <property name="currentIndex">
-      <number>5</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_send_command">
       <property name="toolTip">
@@ -381,7 +381,11 @@ Mode</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
-        <widget class="QLineEdit" name="text_console_input"/>
+        <widget class="QLineEdit" name="text_console_input">
+         <property name="inputMethodHints">
+          <set>Qt::ImhNoPredictiveText</set>
+         </property>
+        </widget>
        </item>
        <item row="0" column="1">
         <widget class="QPushButton" name="button_console_send">
@@ -391,7 +395,11 @@ Mode</string>
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
-        <widget class="QPlainTextEdit" name="text_console_output"/>
+        <widget class="QPlainTextEdit" name="text_console_output">
+         <property name="textInteractionFlags">
+          <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
