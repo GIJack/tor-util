@@ -209,7 +209,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_functions">
       <property name="toolTip">
@@ -446,6 +446,9 @@ Mode</string>
         <widget class="QPushButton" name="button_console_send">
          <property name="text">
           <string>&amp;Send</string>
+         </property>
+         <property name="icon">
+          <iconset theme="player_play"/>
          </property>
         </widget>
        </item>
