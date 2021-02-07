@@ -620,6 +620,11 @@ Mode</string>
     <string>_dormant_mode</string>
    </property>
   </action>
+  <action name="action_flush_dns">
+   <property name="text">
+    <string>_flush_dns</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>text_host_send</tabstop>
@@ -678,6 +683,86 @@ Mode</string>
     <hint type="sourcelabel">
      <x>366</x>
      <y>106</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_new_ip</sender>
+   <signal>clicked()</signal>
+   <receiver>action_new_ip</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>366</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_flush_dns</sender>
+   <signal>clicked()</signal>
+   <receiver>action_flush_dns</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>289</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>289</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_daemon_status</sender>
+   <signal>clicked()</signal>
+   <receiver>action_daemon_status</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>212</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_dormant_mode</sender>
+   <signal>clicked()</signal>
+   <receiver>action_dormant_mode</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_console_send</sender>
+   <signal>clicked()</signal>
+   <receiver>action_console_send</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>362</x>
+     <y>189</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
