@@ -39,6 +39,35 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="button_clear">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Clear Outputs</string>
+     </property>
+     <property name="text">
+      <string>C&amp;lear</string>
+     </property>
+     <property name="icon">
+      <iconset theme="edit-clear">
+       <normaloff>.</normaloff>.</iconset>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label_name">
      <property name="text">
@@ -209,7 +238,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_functions">
       <property name="toolTip">
@@ -219,83 +248,6 @@
        <string>Func&amp;tions</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QFrame" name="frame_dormant_mode">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>145</width>
-           <height>55</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>150</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <widget class="QRadioButton" name="radio_dormant_on">
-          <property name="geometry">
-           <rect>
-            <x>5</x>
-            <y>5</y>
-            <width>50</width>
-            <height>23</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>O&amp;n</string>
-          </property>
-         </widget>
-         <widget class="QRadioButton" name="radio_dormant_off">
-          <property name="geometry">
-           <rect>
-            <x>5</x>
-            <y>30</y>
-            <width>50</width>
-            <height>23</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>O&amp;ff</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="button_dormant_mode">
-          <property name="geometry">
-           <rect>
-            <x>65</x>
-            <y>5</y>
-            <width>75</width>
-            <height>45</height>
-           </rect>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Do&amp;rmant
-Mode</string>
-          </property>
-         </widget>
-        </widget>
-       </item>
        <item row="0" column="1">
         <widget class="QPushButton" name="button_daemon_status">
          <property name="sizePolicy">
@@ -403,6 +355,83 @@ Mode</string>
          </property>
         </widget>
        </item>
+       <item row="0" column="0">
+        <widget class="QFrame" name="frame_dormant_mode">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>145</width>
+           <height>55</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QRadioButton" name="radio_dormant_on">
+          <property name="geometry">
+           <rect>
+            <x>5</x>
+            <y>5</y>
+            <width>50</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>O&amp;n</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radio_dormant_off">
+          <property name="geometry">
+           <rect>
+            <x>5</x>
+            <y>30</y>
+            <width>50</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>O&amp;ff</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="button_dormant_mode">
+          <property name="geometry">
+           <rect>
+            <x>65</x>
+            <y>5</y>
+            <width>75</width>
+            <height>45</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Do&amp;rmant
+Mode</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_nodes">
@@ -415,9 +444,144 @@ Mode</string>
       <property name="toolTip">
        <string>Configure how TOR interacts with other nodes. Entry, Exit, and Exclude lists</string>
       </property>
+      <property name="statusTip">
+       <string>Configure Entry/Exit and Blocked Nodes</string>
+      </property>
       <attribute name="title">
        <string>Nod&amp;es</string>
       </attribute>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="button_nodes_send">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>45</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>&amp;Send</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QListWidget" name="list_excludenodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QListWidget" name="list_exitnodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QListWidget" name="list_entrynodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_excludeexitnodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Exclude Exit Nodes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_excludenodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Exclude Nodes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_exitnodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Exit Nodes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_entrynodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Entry Nodes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QListWidget" name="list_excludeexitnodes">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="button_nodes_recieve">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>45</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>&amp;Recieve</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_misc_config">
       <property name="toolTip">
@@ -547,35 +711,6 @@ Mode</string>
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="button_clear">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="toolTip">
-      <string>Clear Outputs</string>
-     </property>
-     <property name="text">
-      <string>C&amp;lear</string>
-     </property>
-     <property name="icon">
-      <iconset theme="edit-clear">
-       <normaloff>.</normaloff>.</iconset>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
     </widget>
    </item>
   </layout>
@@ -730,22 +865,6 @@ Mode</string>
    <hints>
     <hint type="sourcelabel">
      <x>212</x>
-     <y>202</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>button_dormant_mode</sender>
-   <signal>clicked()</signal>
-   <receiver>action_dormant_mode</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>123</x>
      <y>202</y>
     </hint>
     <hint type="destinationlabel">
