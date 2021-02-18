@@ -78,7 +78,9 @@ class common:
     def check_port(port):
         '''Check if port is a valid TCP Port number. Takes one parameter, the port, returns bool(True/False)'''
         # ports are intergers
-        if type(port) != int:
+        try:
+            port = int(port)
+        except:
             return False
         #between 1 and 65535, or 2^16 - 1
         if 1 <= port <= 65535:
