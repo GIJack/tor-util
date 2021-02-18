@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>main_node_explorer</class>
+ <widget class="QWidget" name="main_node_explorer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>540</width>
+    <height>475</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>360</width>
+    <height>280</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>TOR-Util: Node Explorer</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0" colspan="3">
+    <widget class="QTableWidget" name="table_node_table">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>List of Nodes from TOR Daemon</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::ExtendedSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::SolidLine</enum>
+     </property>
+     <property name="rowCount">
+      <number>3</number>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>Node 1</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Node 2</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Node 3</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Country</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Quality</string>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string>AAAAAAAAAAAAAAAA</string>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string>Node 1</string>
+      </property>
+     </item>
+     <item row="0" column="2">
+      <property name="text">
+       <string>US</string>
+      </property>
+     </item>
+     <item row="0" column="3">
+      <property name="text">
+       <string> I I I</string>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="text">
+       <string>BBBBBBBBBBBBBBBB</string>
+      </property>
+     </item>
+     <item row="1" column="1">
+      <property name="text">
+       <string>Blarg</string>
+      </property>
+     </item>
+     <item row="1" column="2">
+      <property name="text">
+       <string>UK</string>
+      </property>
+     </item>
+     <item row="1" column="3">
+      <property name="text">
+       <string>|</string>
+      </property>
+     </item>
+     <item row="2" column="0">
+      <property name="text">
+       <string>CCCCCCCCCCCCCCCCCC</string>
+      </property>
+     </item>
+     <item row="2" column="1">
+      <property name="text">
+       <string>SuperDuperNode</string>
+      </property>
+     </item>
+     <item row="2" column="2">
+      <property name="text">
+       <string>DE</string>
+      </property>
+     </item>
+     <item row="2" column="3">
+      <property name="text">
+       <string>I I I I</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QPushButton" name="button_refresh">
+     <property name="minimumSize">
+      <size>
+       <width>90</width>
+       <height>55</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>90</width>
+       <height>55</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>&amp;Refresh</string>
+     </property>
+     <property name="icon">
+      <iconset theme="reload"/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QFrame" name="frame_auto_refresh">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>125</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>125</width>
+       <height>70</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLineEdit" name="edit_refresh_timer">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>35</y>
+        <width>30</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhDigitsOnly|Qt::ImhNoPredictiveText|Qt::ImhPreferNumbers</set>
+      </property>
+      <property name="inputMask">
+       <string>99</string>
+      </property>
+      <property name="text">
+       <string>55</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_auto_refresh">
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>5</y>
+        <width>111</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Refersh Node list ever N Secons</string>
+      </property>
+      <property name="text">
+       <string>&amp;Auto refesh</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_refresh_seconds">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>35</y>
+        <width>71</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Time in Seconds Until Refresh</string>
+      </property>
+      <property name="text">
+       <string>Seconds</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+  <action name="action_refresh">
+   <property name="text">
+    <string>_refresh</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>button_refresh</sender>
+   <signal>clicked()</signal>
+   <receiver>action_refresh</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>485</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -450,138 +450,129 @@ Mode</string>
       <attribute name="title">
        <string>Nod&amp;es</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_5">
-       <item row="0" column="1">
-        <widget class="QPushButton" name="button_nodes_send">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>45</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>&amp;Send</string>
-         </property>
-        </widget>
+      <widget class="QPushButton" name="button_nodes_send">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>10</y>
+         <width>85</width>
+         <height>45</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>&amp;Send</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="list_excludenodes">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>86</y>
+         <width>144</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <item>
+        <property name="text">
+         <string>Item1</string>
+        </property>
        </item>
-       <item row="3" column="0">
-        <widget class="QListWidget" name="list_excludenodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
+       <item>
+        <property name="text">
+         <string>NodeName</string>
+        </property>
        </item>
-       <item row="7" column="2">
-        <widget class="QListWidget" name="list_exitnodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
+       <item>
+        <property name="text">
+         <string>8pgqGc3NFoa9poRy4q1s9URjotHDe7RL</string>
+        </property>
        </item>
-       <item row="7" column="0">
-        <widget class="QListWidget" name="list_entrynodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLabel" name="label_excludeexitnodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Exclude Exit Nodes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_excludenodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Exclude Nodes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QLabel" name="label_exitnodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Exit Nodes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_entrynodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Entry Nodes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QListWidget" name="list_excludeexitnodes">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="button_nodes_recieve">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>45</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>&amp;Recieve</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      </widget>
+      <widget class="QLabel" name="label_excludenodes">
+       <property name="geometry">
+        <rect>
+         <x>9</x>
+         <y>60</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Exclude Nodes</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="button_nodes_recieve">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>10</y>
+         <width>85</width>
+         <height>45</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>&amp;Recieve</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="button_node_explorer">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>81</width>
+         <height>45</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Open Node Explorer Window</string>
+       </property>
+       <property name="text">
+        <string>&amp;Node
+Explorer</string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab_misc_config">
       <property name="toolTip">
@@ -612,7 +603,8 @@ Mode</string>
           <string>&amp;Send</string>
          </property>
          <property name="icon">
-          <iconset theme="player_play"/>
+          <iconset theme="player_play">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -760,6 +752,11 @@ Mode</string>
     <string>_flush_dns</string>
    </property>
   </action>
+  <action name="action_open_node_explorer">
+   <property name="text">
+    <string>_open_node_explorer</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>text_host_send</tabstop>
@@ -852,8 +849,8 @@ Mode</string>
      <y>202</y>
     </hint>
     <hint type="destinationlabel">
-     <x>289</x>
-     <y>202</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -882,6 +879,22 @@ Mode</string>
     <hint type="sourcelabel">
      <x>362</x>
      <y>189</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_node_explorer</sender>
+   <signal>clicked()</signal>
+   <receiver>action_open_node_explorer</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>61</x>
+     <y>198</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
