@@ -127,11 +127,12 @@ def get_send_opts():
     '''get options from GUI and return them as a dict{}'''
     config = {}
     config['tor_host'] = widget.text_host_send.text()
+    tor_port           = widget.text_port_send.text()
     config['password'] = widget.text_password_send.text()
 
-    try:
-        config['tor_port'] = int( widget.text_port_send.text() )
-    except:
+    if lib.check_port(tor_port) == True:
+        config['tor_port'] = int( tor_port )
+    else:
         config['tor_port'] = lib.default_config['tor_port']
 
     return config
