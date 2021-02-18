@@ -1,18 +1,20 @@
 from setuptools import setup
 import os
 import sys
+import tempfile
 import shutil
 
 added_files = []
 size_list = ['32', '48', '64', '72', '96', '128', '256', '512']
 if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
     # Generate directory for icons
-    os.mkdir('icons')
+    temp_dir_obj = tempfile.TemporaryDirectory("tor-util-icons")
+    temp_dir     = temp_dir_obj.name + "/"
 
     subdir = ""
     # Icons
     for size in size_list:
-        subdir  = 'icons/' + size
+        subdir  = temp_dir + size
         in_file = 'desktop/tor-util-' + size + '.png'
         os.mkdir(subdir)
         shutil.copy(in_file, subdir + '/tor-util.png')
@@ -63,7 +65,8 @@ setup(name='tor_util',
      )
 # Clean Up temp files
 if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
-    shutil.rmtree('icons')
+    #shutil.rmtree('icons')
+    temp_dir_obj.cleanup()
 elif 'win' in sys.platform:
     raise TypeError("Windows support not written yet")
 elif 'darwin' in sys.platform:
