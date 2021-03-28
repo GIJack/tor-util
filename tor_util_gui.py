@@ -110,13 +110,6 @@ class Worker(QRunnable):
         finally:
             self.signals.finished.emit()  # Done
 
-
-def populate_send_options():
-    '''populate the action combo box'''
-    for item in send_commands:
-       widget.combo_action_send.addItem(item)
-
-
 def final_cleanup():
     '''Cleanup before exit'''
     config = get_send_opts()
@@ -136,45 +129,65 @@ def get_send_opts():
         config['tor_port'] = lib.default_config['tor_port']
 
     return config
+    
+def new_ip_action(progress_callback):
+    '''This is what happens when New IP Button is pressed'''
 
+    config  = get_send_opts()
+    output  = "* Sending New IP Request..."
+    command = "SIGNAL NEWNYM"
+    progress_callback.emit(output)
 
-def send_action(progress_callback):
+    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
+    output = parse_output(result)
+    return output
+
+def daemon_status_action(progress_callback):
     '''This is what happens when send button is pressed'''
 
     config = get_send_opts()
-    action = widget.combo_action_send.currentText()
-
-    output = ""
-    # Do function
-    if action == "New IP":
-        command = "SIGNAL NEWNYM"
-        output = "* Sending New IP Request..."
-    elif action == "Flush DNS":
-        output = "* Clearing DNS Cache..."
-        command = "SIGNAL CLEARDNSCACHE"
-    elif action == "Dormant Mode":
-        output = "* Putting TOR Daemon in Dormant Mode..."
-        command = "SIGNAL DORMANT"
-    elif action == "Active Mode":
-        output = "* Restoring TOR Daemon to Active Mode..."
-        command = "SIGNAL ACTIVE"
-    elif action == "TOR Version":
-        output = "* Querying TOR Daemon Version:"
-        command = "GETINFO version"
-    elif action == "Daemon Status":
-        output = "** Checking Status:"
-    else:
-        output = action + " Unsupported\n"
-        return
+    output = "** Checking Status:"
 
     progress_callback.emit(output)
 
-    col = 27
-    output = ""    
-    if action == "Daemon Status":
-        result = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
-    else:
-        result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
+    result = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
+    output = parse_output(result)
+    return output
+
+def flush_dns_action(progress_callback):
+    '''This is what happens when send button is pressed'''
+
+    config  = get_send_opts()
+    output  = "* Clearing DNS Cache..."
+    command = "SIGNAL CLEARDNSCACHE"
+
+    progress_callback.emit(output)
+
+    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
+    output = parse_output(result)
+    return output
+
+def dormant_mode_action(progress_callback):
+    '''This is what happens when send button is pressed'''
+
+    config  = get_send_opts()
+    # 
+    if widget.radio_dormant_on.isChecked():
+        output  = "* Putting TOR Daemon in Dormant Mode..."
+        command = "SIGNAL DORMANT"
+    elif widget.radio_dormant_off.isChecked():
+        output  = "* Restoring TOR Daemon to Active Mode..."
+        command = "SIGNAL ACTIVE"
+
+    progress_callback.emit(output)
+
+    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
+    output = parse_output(result)
+    return output
+
+def parse_output(result):
+    output = ""
+    col = 27 
     for line in result:
         error_code = int(line[0])
         line = line[-1]
@@ -193,15 +206,23 @@ def send_action(progress_callback):
                 output += line + "\n"
     return output
 
+def new_ip_thread_complete():
+    widget.button_new_ip.setEnabled(True)
 
-def thread_complete():
-    widget.button_send.setEnabled(True)
+def daemon_status_thread_complete():
+    widget.button_daemon_status.setEnabled(True)
 
+def flush_dns_thread_complete():
+    widget.button_flush_dns.setEnabled(True)
+
+def dormant_mode_thread_complete():
+    widget.button_dormant_mode.setEnabled(True)
 
 def add_output(add_string):
     widget.text_output_send.appendPlainText(add_string)
 
 
+# Old Command, delete this
 def send_button():
     widget.button_send.setEnabled(False)
 
@@ -214,13 +235,58 @@ def send_button():
     # Execute
     widget.threadpool.start(worker)
 
+def dormant_mode_button():
+    widget.button_dormant_mode.setEnabled(False)
+    # Pass the function to execute
+    worker = Worker(dormant_mode_action)
+    worker.signals.finished.connect(dormant_mode_thread_complete)
+    worker.signals.result.connect(add_output)
+    worker.signals.progress.connect(add_output)
+
+    # Execute
+    widget.threadpool.start(worker)
+
+def daemon_status_button():
+    widget.button_daemon_status.setEnabled(False)
+
+    # Pass the function to execute
+    worker = Worker(daemon_status_action)
+    worker.signals.finished.connect(daemon_status_thread_complete)
+    worker.signals.result.connect(add_output)
+    worker.signals.progress.connect(add_output)
+
+    # Execute
+    widget.threadpool.start(worker)
+    
+def flush_dns_button():
+    widget.button_flush_dns.setEnabled(False)
+
+    # Pass the function to execute
+    worker = Worker(flush_dns_action)
+    worker.signals.finished.connect(flush_dns_thread_complete)
+    worker.signals.result.connect(add_output)
+    worker.signals.progress.connect(add_output)
+
+    # Execute
+    widget.threadpool.start(worker)
+
+def new_ip_button():
+    widget.button_new_ip.setEnabled(False)
+
+    # Pass the function to execute
+    worker = Worker(new_ip_action)
+    worker.signals.finished.connect(new_ip_thread_complete)
+    worker.signals.result.connect(add_output)
+    worker.signals.progress.connect(add_output)
+
+    # Execute
+    widget.threadpool.start(worker)
 
 def clear_output_boxes():
     '''Clear Output on button press'''
     widget.text_output_send.setPlainText('')
     widget.text_output_hash.setPlainText('')
     widget.text_password_hash.setText('')
-
 
 def main():
     app = QApplication(sys.argv)
@@ -237,7 +303,10 @@ def main():
     widget.threadpool = QThreadPool()
 
     # Button Presses go here:
-    widget.action_api_send.triggered.connect(send_button)
+    widget.action_new_ip.triggered.connect(new_ip_button)
+    widget.action_flush_dns.triggered.connect(flush_dns_button)
+    widget.action_daemon_status.triggered.connect(daemon_status_button)
+    widget.action_dormant_mode.triggered.connect(dormant_mode_button)
     widget.action_clear_display.triggered.connect(clear_output_boxes)
 
     # Misc effects:
@@ -246,7 +315,7 @@ def main():
     # Initialization
     widget.label_name.setText(lib.prog_meta['name'])
     widget.label_version.setText(lib.prog_meta['version'])
-    populate_send_options()
+    #populate_send_options()
 
     # Load Config
     try:
