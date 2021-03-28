@@ -143,7 +143,7 @@ def new_ip_action(progress_callback):
     return output
 
 def daemon_status_action(progress_callback):
-    '''This is what happens when send button is pressed'''
+    '''This is what happens when Daemon Status is pressed'''
 
     config = get_send_opts()
     output = "** Checking Status:"
@@ -155,7 +155,7 @@ def daemon_status_action(progress_callback):
     return output
 
 def flush_dns_action(progress_callback):
-    '''This is what happens when send button is pressed'''
+    '''This is what happens when Flush DNS is pressed'''
 
     config  = get_send_opts()
     output  = "* Clearing DNS Cache..."
@@ -168,7 +168,7 @@ def flush_dns_action(progress_callback):
     return output
 
 def dormant_mode_action(progress_callback):
-    '''This is what happens when send button is pressed'''
+    '''This is what happens when Dormant Mode button is pressed'''
 
     config  = get_send_opts()
     # 
@@ -206,28 +206,28 @@ def parse_output(result):
                 output += line + "\n"
     return output
 
-def new_ip_thread_complete():
+def thread_complete():
+    ''' when command completes, re-enable all the buttons'''
     widget.button_new_ip.setEnabled(True)
-
-def daemon_status_thread_complete():
     widget.button_daemon_status.setEnabled(True)
-
-def flush_dns_thread_complete():
     widget.button_flush_dns.setEnabled(True)
-
-def dormant_mode_thread_complete():
     widget.button_dormant_mode.setEnabled(True)
 
+def disable_buttons():
+    '''when command is sent, buttons are disabled'''
+    widget.button_dormant_mode.setEnabled(False)
+    widget.button_daemon_status.setEnabled(False)
+    widget.button_flush_dns.setEnabled(False)
+    widget.button_new_ip.setEnabled(False)
+    
+    
 def add_output(add_string):
     widget.text_output_send.appendPlainText(add_string)
 
-
-# Old Command, delete this
-def send_button():
-    widget.button_send.setEnabled(False)
-
+def dormant_mode_button():
+    disable_buttons
     # Pass the function to execute
-    worker = Worker(send_action)
+    worker = Worker(dormant_mode_action)
     worker.signals.finished.connect(thread_complete)
     worker.signals.result.connect(add_output)
     worker.signals.progress.connect(add_output)
@@ -235,23 +235,12 @@ def send_button():
     # Execute
     widget.threadpool.start(worker)
 
-def dormant_mode_button():
-    widget.button_dormant_mode.setEnabled(False)
-    # Pass the function to execute
-    worker = Worker(dormant_mode_action)
-    worker.signals.finished.connect(dormant_mode_thread_complete)
-    worker.signals.result.connect(add_output)
-    worker.signals.progress.connect(add_output)
-
-    # Execute
-    widget.threadpool.start(worker)
-
 def daemon_status_button():
-    widget.button_daemon_status.setEnabled(False)
+    disable_buttons
 
     # Pass the function to execute
     worker = Worker(daemon_status_action)
-    worker.signals.finished.connect(daemon_status_thread_complete)
+    worker.signals.finished.connect(thread_complete)
     worker.signals.result.connect(add_output)
     worker.signals.progress.connect(add_output)
 
@@ -259,11 +248,11 @@ def daemon_status_button():
     widget.threadpool.start(worker)
     
 def flush_dns_button():
-    widget.button_flush_dns.setEnabled(False)
+    disable_buttons
 
     # Pass the function to execute
     worker = Worker(flush_dns_action)
-    worker.signals.finished.connect(flush_dns_thread_complete)
+    worker.signals.finished.connect(thread_complete)
     worker.signals.result.connect(add_output)
     worker.signals.progress.connect(add_output)
 
@@ -271,11 +260,11 @@ def flush_dns_button():
     widget.threadpool.start(worker)
 
 def new_ip_button():
-    widget.button_new_ip.setEnabled(False)
+    disable_buttons
 
     # Pass the function to execute
     worker = Worker(new_ip_action)
-    worker.signals.finished.connect(new_ip_thread_complete)
+    worker.signals.finished.connect(thread_complete)
     worker.signals.result.connect(add_output)
     worker.signals.progress.connect(add_output)
 
