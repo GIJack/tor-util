@@ -225,7 +225,7 @@ def add_output(add_string):
     widget.text_output_send.appendPlainText(add_string)
 
 def dormant_mode_button():
-    disable_buttons
+    disable_buttons()
     # Pass the function to execute
     worker = Worker(dormant_mode_action)
     worker.signals.finished.connect(thread_complete)
@@ -236,7 +236,7 @@ def dormant_mode_button():
     widget.threadpool.start(worker)
 
 def daemon_status_button():
-    disable_buttons
+    disable_buttons()
 
     # Pass the function to execute
     worker = Worker(daemon_status_action)
@@ -248,7 +248,7 @@ def daemon_status_button():
     widget.threadpool.start(worker)
     
 def flush_dns_button():
-    disable_buttons
+    disable_buttons()
 
     # Pass the function to execute
     worker = Worker(flush_dns_action)
