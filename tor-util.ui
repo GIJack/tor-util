@@ -301,7 +301,7 @@ Mode</string>
      <property name="geometry">
       <rect>
        <x>90</x>
-       <y>10</y>
+       <y>20</y>
        <width>225</width>
        <height>30</height>
       </rect>
@@ -326,7 +326,7 @@ Mode</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>20</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -342,9 +342,9 @@ Mode</string>
      <property name="geometry">
       <rect>
        <x>320</x>
-       <y>10</y>
+       <y>5</y>
        <width>80</width>
-       <height>30</height>
+       <height>55</height>
       </rect>
      </property>
      <property name="toolTip">
@@ -358,9 +358,9 @@ Mode</string>
      <property name="geometry">
       <rect>
        <x>5</x>
-       <y>50</y>
+       <y>70</y>
        <width>395</width>
-       <height>265</height>
+       <height>160</height>
       </rect>
      </property>
      <property name="font">
