@@ -342,7 +342,7 @@ Mode</string>
      <property name="geometry">
       <rect>
        <x>320</x>
-       <y>5</y>
+       <y>8</y>
        <width>80</width>
        <height>55</height>
       </rect>
