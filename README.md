@@ -1,5 +1,6 @@
 # tor-util
-Utility for TOR(The Onion ROUTER) such as requesting a new IP, or generating API password. Uses Network API for control
+Utility for TOR(The Onion ROUTER) such as requesting a new IP, or generating API
+password. Uses Network API for control.
 
 Writen in python using Qt5, with accompanying CLI app, this app is for sending
 API calls over the network to a running TOR daemon.
@@ -12,8 +13,6 @@ can be generated on the "Generate Password" tab.
 
 Status: Sending commands works, both CLI and GUI. There is a .desktop file, 
 icons, python setup package
-
-Generate Password is not implemented yet
 
 GUI
 ---
