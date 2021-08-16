@@ -59,10 +59,16 @@ def warn(message):
     print("tor_util_cli:" + colors.yellow + colors.bold + "¡WARN!: " + colors.reset + message, file=sys.stderr)
     return
     
-def format_password_hash(in_password):
+def print_password_hash(in_password):
     '''returns a hashed password string for torrc. takes one parameter, plaintext password'''
-    raise "Not Implemented Yet!"
-    return
+    in_password = str(in_password)
+    hashed_pass = lib.generate_tor_hash(in_password)
+    output_message = '''# Paste the following line in your torrc file
+# Delete any previous HashedControlPassword lines
+'''
+    output_message += "HashedControlPassword " + hashed_pass
+    print(output_message)
+    sys.exit()
 
 def main():
     parser = argparse.ArgumentParser(description=tor_util_desc,epilog="\n\n",add_help=False,formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -114,14 +120,7 @@ def main():
     # commands
     command = ""
     if args.command == None:
-        exit_with_error(2,"No Command Specified, see --help")
-    elif args.command == "gen_passwd_hash":
-        message("Generating hash, paste this in torrc:")
-        try:
-            exit_with_error(4,"Not implemented yet!")
-            format_password_hash(config['password'])
-        except:
-            exit_with_error(1,"Could not generate password hash")    
+        exit_with_error(2,"No Command Specified, see --help")   
     elif args.command == "new_ip":
         message("Sending New IP Request...")
         command = "SIGNAL NEWNYM"
@@ -136,6 +135,18 @@ def main():
         command = "SIGNAL ACTIVE"
     elif args.command == "daemon_status":
         message("Checking Daemon Status...")
+    elif args.command == "gen_passwd_hash":
+        if args.password_prompt == None and args.password == None:
+            hash_pass  = getpass()
+        elif args.password_prompt != None:
+            hash_pass  = args.password_prompt
+        elif args.password != None:
+            hash_pass = args.password
+        else:
+            exit_with_error(2,"Something has gone terribly wrong. unknown password type for hashing. Should never get here. DEBUG!")
+
+        print_password_hash(hash_pass)
+
     else:
         exit_with_error(2,"Command " + args.command + " is not supported.")
 

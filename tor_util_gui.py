@@ -130,6 +130,18 @@ def get_send_opts():
 
     return config
     
+def generate_password_btn_press():
+    password    = widget.text_password_hash.text()
+    if password == "" or password == None:
+        return
+    hashed_pass = lib.generate_tor_hash(password)
+    
+    output_message = '''# Copy this to your torrc file
+# Remove previous HashedControlPassword
+'''
+    output_message += "HashedControlPassword " + hashed_pass
+    widget.text_output_hash.appendPlainText(output_message)
+    
 def new_ip_action(progress_callback):
     '''This is what happens when New IP Button is pressed'''
 
@@ -291,12 +303,13 @@ def main():
     # thread
     widget.threadpool = QThreadPool()
 
-    # Button Presses go here:
+    # Button Presses go here: generate_password_btn_press
     widget.action_new_ip.triggered.connect(new_ip_button)
     widget.action_flush_dns.triggered.connect(flush_dns_button)
     widget.action_daemon_status.triggered.connect(daemon_status_button)
     widget.action_dormant_mode.triggered.connect(dormant_mode_button)
     widget.action_clear_display.triggered.connect(clear_output_boxes)
+    widget.action_gen_password.triggered.connect(generate_password_btn_press)
 
     # Misc effects:
     widget.action_exit_cleanup.triggered.connect(final_cleanup)
