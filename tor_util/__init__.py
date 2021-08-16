@@ -7,6 +7,8 @@ Common Library
 
 import os
 import sys
+import hashlib
+import binascii
 import json
 import stem
 import stem.connection
@@ -162,3 +164,31 @@ class common:
     
         control_obj.close()
         return output
+        
+    def generate_tor_hash(password):
+        """https://github.com/ray0be/totororequests/blob/master/totororequests/totoro.py
+        Copyright (c) 2020 Victor Paynat-Sautivet <contact@ray0.be>"""
+        secret = bytes(password, 'ascii')
+        indicator = bytes(chr(96), 'ascii')
+        salt = b"".join([os.urandom(8), indicator])
+
+        c = 96
+        EXPBIAS = 6
+        count = (16+(c & 15)) << ((c >> 4) + EXPBIAS)
+
+        d = hashlib.sha1()
+        tmp = salt[:8]+secret
+
+        slen = len(tmp)
+        while count:
+            if count > slen:
+                d.update(tmp)
+                count -= slen
+            else:
+                d.update(tmp[:count])
+                count = 0
+
+        salt = binascii.b2a_hex(salt[:8]).upper().decode('ascii')
+        torhash = d.hexdigest().upper()
+
+        return '16:{}{}{}'.format(salt, '60', torhash)
