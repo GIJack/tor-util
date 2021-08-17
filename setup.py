@@ -30,6 +30,7 @@ if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.plat
 
     added_files.append(('share/tor-util/'    , ['tor-util.ui']))
     added_files.append(('share/applications/', ['desktop/tor_util.desktop']))
+    added_files.append(('share/bash-completion/completions/tor_util_cli.py', ['bash-completion/tor_util_cli.bash']))
 elif 'win' in sys.platform:
     raise TypeError("Windows support not written yet")
 elif 'darwin' in sys.platform:
