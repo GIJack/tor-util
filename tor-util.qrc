@@ -2,5 +2,7 @@
   <qresource prefix="program_icon">
     <file>tor_util/icons/program_icon.png</file>
   </qresource>
-  <qresource prefix="action_buttons"/>
+  <qresource prefix="action_buttons">
+    <file>tor_util/icons/clean-75.png</file>
+  </qresource>
 </RCC>
