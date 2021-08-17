@@ -137,7 +137,7 @@ def get_send_opts():
 def generate_password_btn_press():
     password    = widget.text_password_hash.text()
     if password == "" or password == None:
-        return
+        return None
     hashed_pass = lib.generate_tor_hash(password)
     
     output_message = '''# Copy this to your torrc file
