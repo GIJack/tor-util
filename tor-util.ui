@@ -36,7 +36,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="tor-util.qrc">
-    <normaloff>:/program_icon/tor_util/icons/program_icon.png</normaloff>:/program_icon/tor_util/icons/program_icon.png</iconset>
+    <normaloff>:/program_icon/desktop/tor-util-96.png</normaloff>:/program_icon/desktop/tor-util-96.png</iconset>
   </property>
   <widget class="QTabWidget" name="tabwidget_main">
    <property name="geometry">
@@ -369,7 +369,8 @@ Mode</string>
       <string>&amp;Generate</string>
      </property>
      <property name="icon">
-      <iconset theme="applications-system"/>
+      <iconset theme="applications-system">
+       <normaloff>.</normaloff>.</iconset>
      </property>
     </widget>
     <widget class="QPlainTextEdit" name="text_output_hash">
@@ -453,7 +454,7 @@ Mode</string>
    </property>
    <property name="icon">
     <iconset resource="tor-util.qrc">
-     <normaloff>:/action_buttons/tor_util/icons/clean-75.png</normaloff>:/action_buttons/tor_util/icons/clean-75.png</iconset>
+     <normaloff>:/action_buttons/application_buttons/clean-75.png</normaloff>:/action_buttons/application_buttons/clean-75.png</iconset>
    </property>
    <property name="iconSize">
     <size>

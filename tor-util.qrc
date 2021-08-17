@@ -1,8 +1,8 @@
 <RCC>
   <qresource prefix="program_icon">
-    <file>tor_util/icons/program_icon.png</file>
+    <file>desktop/tor-util-96.png</file>
   </qresource>
   <qresource prefix="action_buttons">
-    <file>tor_util/icons/clean-75.png</file>
+    <file>application_buttons/clean-75.png</file>
   </qresource>
 </RCC>
