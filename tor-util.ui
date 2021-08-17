@@ -36,8 +36,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="tor-util.qrc">
-    <normaloff>:/program_icon/desktop/tor-util-128.png</normaloff>
-    <normalon>:/program_icon/desktop/tor-util-128.png</normalon>:/program_icon/desktop/tor-util-128.png</iconset>
+    <normaloff>:/program_icon/tor_util/icons/program_icon.png</normaloff>:/program_icon/tor_util/icons/program_icon.png</iconset>
   </property>
   <widget class="QTabWidget" name="tabwidget_main">
    <property name="geometry">
