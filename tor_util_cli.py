@@ -63,10 +63,11 @@ def print_password_hash(in_password):
     '''returns a hashed password string for torrc. takes one parameter, plaintext password'''
     in_password = str(in_password)
     hashed_pass = lib.generate_tor_hash(in_password)
-    output_message = '''# Paste the following line in your torrc file
+    output_message = '''
+# Paste the following line in your torrc file
 # Delete any previous HashedControlPassword lines
 '''
-    output_message += "HashedControlPassword " + hashed_pass
+    output_message += "HashedControlPassword " + hashed_pass + "\n"
     print(output_message)
     sys.exit()
 
