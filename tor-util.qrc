@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="program_icon">
+    <file>desktop/tor-util-128.png</file>
+  </qresource>
+  <qresource prefix="action_buttons"/>
+</RCC>

@@ -3,8 +3,14 @@ import os
 import sys
 import tempfile
 import shutil
+import subprocess
 
 added_files = []
+
+#compile resource file
+subprocess.call("rcc -g python tor-util.qrc > tor_util/tor_util_qrc.py",shell=True)
+subprocess.call("sed -i s/PySide2/PyQt5/g tor_util/tor_util_qrc.py",shell=True)
+
 size_list = ['32', '48', '64', '72', '96', '128', '256', '512']
 if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
     # Generate directory for icons
@@ -65,7 +71,6 @@ setup(name='tor_util',
      )
 # Clean Up temp files
 if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
-    #shutil.rmtree('icons')
     temp_dir_obj.cleanup()
 elif 'win' in sys.platform:
     raise TypeError("Windows support not written yet")

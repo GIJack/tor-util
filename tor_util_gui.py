@@ -29,6 +29,7 @@ tor_util_desc = tor_util_desc.strip()
 send_commands = [ "New IP", "Flush DNS", "Dormant Mode", "Active Mode", "Daemon Status" ]
 
 from tor_util import common as lib
+from tor_util import tor_util_qrc
 
 import traceback
 import sys
@@ -39,6 +40,9 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject, QRunnable, QThreadPool
 
+# Resource file detection:
+if "usr/" in os.path.realpath(__file__) and "bin/" in os.path.realpath(__file__):
+   qrc_file = "/usr/share/tor-util/tor-util.ui"
 
 class WorkerSignals(QObject):
     '''

@@ -35,8 +35,9 @@
    <string>TOR(The Onion Router) Utility</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tor-util">
-    <normaloff>.</normaloff>.</iconset>
+   <iconset resource="tor-util.qrc">
+    <normaloff>:/program_icon/desktop/tor-util-128.png</normaloff>
+    <normalon>:/program_icon/desktop/tor-util-128.png</normalon>:/program_icon/desktop/tor-util-128.png</iconset>
   </property>
   <widget class="QTabWidget" name="tabwidget_main">
    <property name="geometry">
@@ -641,7 +642,9 @@ Mode</string>
   <tabstop>text_password_hash</tabstop>
   <tabstop>button_gen_password_hash</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="tor-util.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>button_gen_password_hash</sender>
