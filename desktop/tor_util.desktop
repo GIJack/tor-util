@@ -8,4 +8,4 @@ Exec=tor_util_gui.py
 # TODO: fill out for production use
 Path=
 Categories=Network
-Keywords=onion
+Keywords=onion;tor
