@@ -136,15 +136,11 @@ def main():
     elif args.command == "daemon_status":
         message("Checking Daemon Status...")
     elif args.command == "gen_passwd_hash":
-        if args.password_prompt == None and args.password == None:
+        if  args.password == None:
             hash_pass  = getpass()
-        elif args.password_prompt != None:
-            hash_pass  = args.password_prompt
-        elif args.password != None:
-            hash_pass = args.password
         else:
-            exit_with_error(2,"Something has gone terribly wrong. unknown password type for hashing. Should never get here. DEBUG!")
-
+            hash_pass  = args.password
+        
         print_password_hash(hash_pass)
 
     else:
