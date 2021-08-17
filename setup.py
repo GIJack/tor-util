@@ -7,21 +7,6 @@ import subprocess
 
 added_files = []
 
-#compile resource file
-subprocess.call("rcc -g python tor-util.qrc > tor_util/tor_util_qrc.py",shell=True)
-## Replace PySide with PyQT, because we use PyQt in this project
-
-#subprocess.call("sed -i s/PySide2/PyQt5/g tor_util/tor_util_qrc.py",shell=True)
-# sed re-implemented natively in python to avoid compatibility issues
-# with platforms that don't support sed natively.
-f = open("tor_util/tor_util_qrc.py","r")
-contents = f.read()
-f.close()
-contents = contents.replace("PySide2","PyQt5")
-f =  open("tor_util/tor_util_qrc.py","w")
-f.write(contents)
-f.close()
-
 size_list = ['32', '48', '64', '72', '96', '128', '256', '512']
 if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.platform:
     # Generate directory for icons
