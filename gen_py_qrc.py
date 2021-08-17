@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-# Helper script that compiles the Qt Resources file into an importable python
-# module
+# Helper script that compiles the Qt Resources file into a python module
+# run this every time the .qrc file is changed
 import subprocess
 print("Compiling tor-util icon file")
 
