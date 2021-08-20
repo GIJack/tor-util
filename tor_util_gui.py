@@ -40,10 +40,6 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject, QRunnable, QThreadPool
 
-# Resource file detection:
-if "usr/" in os.path.realpath(__file__) and "bin/" in os.path.realpath(__file__):
-   qrc_file = "/usr/share/tor-util/tor-util.ui"
-
 class WorkerSignals(QObject):
     '''
     Defines the signals available from a running worker thread.
