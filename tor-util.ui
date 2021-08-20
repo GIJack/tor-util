@@ -785,5 +785,21 @@ Mode</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>text_password_hash</sender>
+   <signal>returnPressed()</signal>
+   <receiver>action_gen_password</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>198</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>
