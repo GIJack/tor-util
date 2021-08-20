@@ -53,6 +53,9 @@
        <height>50</height>
       </size>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="toolTip">
       <string>Clear Outputs</string>
      </property>
@@ -60,8 +63,8 @@
       <string>C&amp;lear</string>
      </property>
      <property name="icon">
-      <iconset theme="edit-clear">
-       <normaloff>.</normaloff>.</iconset>
+      <iconset resource="../tor-util.qrc">
+       <normaloff>:/action_buttons/application_buttons/clean-75.png</normaloff>:/action_buttons/application_buttons/clean-75.png</iconset>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -268,6 +271,9 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="toolTip">
           <string>Query TOR daemon for some base states about fitness for use</string>
          </property>
@@ -297,6 +303,9 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="text">
           <string>Flush
 &amp;DNS</string>
@@ -322,6 +331,9 @@
            <width>70</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="toolTip">
           <string>Execute Command</string>
@@ -425,6 +437,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Do&amp;rmant
 Mode</string>
@@ -470,6 +485,9 @@ Mode</string>
          <width>0</width>
          <height>45</height>
         </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="text">
         <string>&amp;Send</string>
@@ -546,6 +564,9 @@ Mode</string>
          <height>45</height>
         </size>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>&amp;Recieve</string>
        </property>
@@ -564,6 +585,9 @@ Mode</string>
          <width>0</width>
          <height>45</height>
         </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="toolTip">
         <string>Open Node Explorer Window</string>
@@ -599,6 +623,15 @@ Explorer</string>
        </item>
        <item row="0" column="1">
         <widget class="QPushButton" name="button_console_send">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="text">
           <string>&amp;Send</string>
          </property>
@@ -675,11 +708,29 @@ Explorer</string>
        </item>
        <item row="0" column="2">
         <widget class="QPushButton" name="button_gen_password_hash">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>55</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="toolTip">
           <string>Generate Hash For torrc From Password</string>
          </property>
          <property name="text">
           <string>&amp;Generate</string>
+         </property>
+         <property name="icon">
+          <iconset theme="applications-system"/>
          </property>
         </widget>
        </item>
@@ -772,7 +823,9 @@ Explorer</string>
   <tabstop>button_gen_password_hash</tabstop>
   <tabstop>button_clear</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../tor-util.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>main_tor_util</sender>
@@ -895,6 +948,22 @@ Explorer</string>
     <hint type="sourcelabel">
      <x>61</x>
      <y>198</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>text_password_hash</sender>
+   <signal>returnPressed()</signal>
+   <receiver>action_gen_password</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>205</x>
+     <y>201</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
