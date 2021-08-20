@@ -32,8 +32,7 @@ from tor_util import common as lib
 from tor_util import tor_util_qrc
 
 import traceback
-import sys
-import os
+import sys, os
 
 from PyQt5 import uic
 #from PyQt5.QtGui import *
