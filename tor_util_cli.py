@@ -83,7 +83,6 @@ def main():
     parser_network = parser.add_argument_group("Network","Network Settings for send commands")
     parser_network.add_argument("-h","--host"    , help="Address/hostname of TOR daemon")
     parser_network.add_argument("-p","--port"    , help="Port of TOR daemon",type=int)
-    parser_network.add_argument
     args = parser.parse_args()
     
     # Check version. Don't touch anything, just exit when done
