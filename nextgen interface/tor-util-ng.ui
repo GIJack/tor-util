@@ -241,7 +241,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_functions">
       <property name="toolTip">
@@ -730,7 +730,8 @@ Explorer</string>
           <string>&amp;Generate</string>
          </property>
          <property name="icon">
-          <iconset theme="applications-system"/>
+          <iconset theme="applications-system">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -964,6 +965,22 @@ Explorer</string>
     <hint type="sourcelabel">
      <x>205</x>
      <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>text_console_input</sender>
+   <signal>returnPressed()</signal>
+   <receiver>action_console_send</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>166</x>
+     <y>189</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
