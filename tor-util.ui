@@ -666,6 +666,16 @@ Mode</string>
   </action>
  </widget>
  <tabstops>
+  <tabstop>text_host_send</tabstop>
+  <tabstop>text_port_send</tabstop>
+  <tabstop>text_password_send</tabstop>
+  <tabstop>radio_dormant_on</tabstop>
+  <tabstop>radio_dormant_off</tabstop>
+  <tabstop>button_dormant_mode</tabstop>
+  <tabstop>button_daemon_status</tabstop>
+  <tabstop>button_flush_dns</tabstop>
+  <tabstop>button_new_ip</tabstop>
+  <tabstop>button_clear</tabstop>
   <tabstop>text_password_hash</tabstop>
   <tabstop>button_gen_password_hash</tabstop>
  </tabstops>
