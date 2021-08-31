@@ -15,6 +15,7 @@ if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.plat
 
     subdir = ""
     # Icons
+    print(os.path.abspath(os.path.curdir))
     for size in size_list:
         subdir  = temp_dir + size
         in_file = 'desktop/tor-util-' + size + '.png'
@@ -26,7 +27,7 @@ if 'linux' in sys.platform or 'freebsd' in sys.platform or 'openbsd' in sys.plat
 
     added_files.append(('share/tor-util/'    , ['tor-util.ui']))
     added_files.append(('share/applications/', ['desktop/tor_util.desktop']))
-    added_files.append(('share/bash-completion/completions/tor_util_cli.py', ['bash-completion/tor_util_cli.bash']))
+    added_files.append(('share/bash-completion/completions/', ['bash-completion/tor_util_cli.bash']))
 elif 'win' in sys.platform:
     raise TypeError("Windows support not written yet")
 elif 'darwin' in sys.platform:
