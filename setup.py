@@ -44,7 +44,7 @@ for item in f.readlines():
 f.close()
 
 setup(name='tor_util',
-      version='0.1.1',
+      version='0.1.2',
       description='Utility for controling TOR via the API',
       author='GI Jack',
       author_email='GI_Jack@hackermail.com',
