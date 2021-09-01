@@ -675,9 +675,9 @@ Mode</string>
   <tabstop>button_daemon_status</tabstop>
   <tabstop>button_flush_dns</tabstop>
   <tabstop>button_new_ip</tabstop>
-  <tabstop>button_clear</tabstop>
   <tabstop>text_password_hash</tabstop>
   <tabstop>button_gen_password_hash</tabstop>
+  <tabstop>button_clear</tabstop>
  </tabstops>
  <resources>
   <include location="tor-util.qrc"/>
