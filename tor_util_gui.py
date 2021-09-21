@@ -37,7 +37,7 @@ import sys, os
 from PyQt5 import uic
 #from PyQt5.QtGui import *
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject, QRunnable, QThreadPool
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, QObject, QRunnable, QThreadPool, QStandardPaths
 
 class WorkerSignals(QObject):
     '''
@@ -293,12 +293,16 @@ def main():
 
     # Main Window
     global widget
-    ui_file = "tor_util.ui"
-    # This is an ugly nasty hack that only really works on GNU systems until
-    # I figure out how to call the UI file from the module itself. Blocker for
-    # windows and mac support
-    if "usr/" in os.path.realpath(__file__) and "bin/" in os.path.realpath(__file__):
-        ui_file = "/usr/share/tor-util/tor_util.ui"
+    
+    ui_filename = "tor_util.ui"
+    local_ui_file  = os.path.curdir + "/" + ui_filename
+    system_ui_file = QStandardPaths.locate(QStandardPaths.GenericDataLocation,'tor-util/' + ui_filename)
+    if os.path.exists(local_ui_file):
+        ui_file = local_ui_file
+    elif os.path.exists(system_ui_file):
+        ui_file = system_ui_file
+    else:
+        raise FileNotFoundError(2, "Unable to locate " + ui_filename)
     
     widget = uic.loadUi(ui_file)
 
