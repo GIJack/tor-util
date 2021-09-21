@@ -294,6 +294,9 @@ def main():
     # Main Window
     global widget
     ui_file = "tor_util.ui"
+    # This is an ugly nasty hack that only really works on GNU systems until
+    # I figure out how to call the UI file from the module itself. Blocker for
+    # windows and mac support
     if "usr/" in os.path.realpath(__file__) and "bin/" in os.path.realpath(__file__):
         ui_file = "/usr/share/tor-util/tor_util.ui"
     
