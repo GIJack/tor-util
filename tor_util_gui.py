@@ -336,7 +336,7 @@ def main():
     try:
         config = lib.proc_config_start()
     except:
-        widget.label_send_output.setText("** Warning: ¡Could not load config!, using defaults...")
+        widget.label_send_output.setText("WARNING: ¡Could not load config!, using defaults...")
         config = lib.default_config
 
     widget.text_host_send.setText(config['tor_host'])
