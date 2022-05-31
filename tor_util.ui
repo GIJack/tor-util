@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>460</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,13 +19,13 @@
   <property name="minimumSize">
    <size>
     <width>420</width>
-    <height>460</height>
+    <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>420</width>
-    <height>460</height>
+    <height>500</height>
    </size>
   </property>
   <property name="focusPolicy">
@@ -44,7 +44,7 @@
      <x>5</x>
      <y>135</y>
      <width>410</width>
-     <height>271</height>
+     <height>300</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -75,36 +75,6 @@
     <attribute name="title">
      <string>Send &amp;Command</string>
     </attribute>
-    <widget class="QPlainTextEdit" name="text_output_send">
-     <property name="geometry">
-      <rect>
-       <x>5</x>
-       <y>70</y>
-       <width>395</width>
-       <height>160</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <family>Monospace</family>
-      </font>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::ClickFocus</enum>
-     </property>
-     <property name="toolTip">
-      <string>Return Values From TOR Daemon</string>
-     </property>
-     <property name="textInteractionFlags">
-      <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
     <widget class="QPushButton" name="button_daemon_status">
      <property name="geometry">
       <rect>
@@ -301,6 +271,34 @@ Mode</string>
       </property>
      </widget>
     </widget>
+    <widget class="QLabel" name="label_send_output">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>390</width>
+       <height>190</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="text">
+      <string>Output</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::PlainText</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_gen_password_hash">
     <property name="toolTip">
@@ -432,7 +430,7 @@ Mode</string>
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>410</y>
+     <y>445</y>
      <width>75</width>
      <height>47</height>
     </rect>
