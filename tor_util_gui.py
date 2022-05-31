@@ -33,6 +33,7 @@ from tor_util import tor_util_qrc
 
 import traceback
 import sys, os
+from datetime import datetime
 
 from PyQt5 import uic
 #from PyQt5.QtGui import *
@@ -139,66 +140,71 @@ def generate_password_btn_press():
 # Remove previous HashedControlPassword
 '''
     output_message += "HashedControlPassword " + hashed_pass
-    widget.text_output_hash.appendPlainText(output_message)
+    widget.text_output_hash.setPlainText(output_message)
     
 def new_ip_action(progress_callback):
     '''This is what happens when New IP Button is pressed'''
 
     config  = get_send_opts()
-    output  = "* Sending New IP Request..."
+    time_stamp   = str( datetime.now() )
+    output  = time_stamp + "\n\nSending New IP Request...\n\n"
     command = "SIGNAL NEWNYM"
     progress_callback.emit(output)
 
-    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
-    output = parse_output(result)
+    result   = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
+    output   += parse_output(result)
     return output
 
 def daemon_status_action(progress_callback):
     '''This is what happens when Daemon Status is pressed'''
 
-    config = get_send_opts()
-    output = "** Checking Status:"
+    config     = get_send_opts()
+    time_stamp = str( datetime.now() )
+    output     = time_stamp + "\n\tStatus:\n"
 
     progress_callback.emit(output)
 
-    result = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
-    output = parse_output(result)
+    result  = lib.tor_daemon_status(config['tor_host'],config['tor_port'],config['password'])
+    output += parse_output(result)
     return output
 
 def flush_dns_action(progress_callback):
     '''This is what happens when Flush DNS is pressed'''
 
-    config  = get_send_opts()
-    output  = "* Clearing DNS Cache..."
-    command = "SIGNAL CLEARDNSCACHE"
+    config     = get_send_opts()
+    time_stamp = str( datetime.now() )
+    output     = time_stamp + "\n\nClearing DNS Cache...\n\n"
+    command    = "SIGNAL CLEARDNSCACHE"
 
     progress_callback.emit(output)
 
-    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
-    output = parse_output(result)
+    result  = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
+    output += parse_output(result)
     return output
 
 def dormant_mode_action(progress_callback):
     '''This is what happens when Dormant Mode button is pressed'''
 
-    config  = get_send_opts()
-    # 
+    config     = get_send_opts()
+    time_stamp = str( datetime.now() )
+    output     = time_stamp + "\n\n"
     if widget.radio_dormant_on.isChecked():
-        output  = "* Putting TOR Daemon in Dormant Mode..."
-        command = "SIGNAL DORMANT"
+        output  += "Putting TOR Daemon in Dormant Mode...\n\n"
+        command  = "SIGNAL DORMANT"
     elif widget.radio_dormant_off.isChecked():
-        output  = "* Restoring TOR Daemon to Active Mode..."
-        command = "SIGNAL ACTIVE"
+        output  += "Restoring TOR Daemon to Active Mode...\n\n"
+        command  = "SIGNAL ACTIVE"
 
     progress_callback.emit(output)
 
-    result = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
-    output = parse_output(result)
+    result  = lib.send_tor_command(command,config['tor_host'],config['tor_port'],config['password'])
+    output += parse_output(result)
     return output
 
 def parse_output(result):
     output = ""
     col = 27 
+
     for line in result:
         error_code = int(line[0])
         line = line[-1]
@@ -233,7 +239,7 @@ def disable_buttons():
     
     
 def add_output(add_string):
-    widget.text_output_send.appendPlainText(add_string)
+    widget.label_send_output.setText(add_string)
 
 def dormant_mode_button():
     disable_buttons()
@@ -284,7 +290,7 @@ def new_ip_button():
 
 def clear_output_boxes():
     '''Clear Output on button press'''
-    widget.text_output_send.setPlainText('')
+    widget.label_send_output.setText('')
     widget.text_output_hash.setPlainText('')
     widget.text_password_hash.setText('')
 
@@ -326,10 +332,11 @@ def main():
     #populate_send_options()
 
     # Load Config
+    widget.label_send_output.setText('')
     try:
         config = lib.proc_config_start()
     except:
-        widget.text_output_send.appendPlainText("** Warning: ¡Could not load config!, using defaults...")
+        widget.label_send_output.setText("** Warning: ¡Could not load config!, using defaults...")
         config = lib.default_config
 
     widget.text_host_send.setText(config['tor_host'])
