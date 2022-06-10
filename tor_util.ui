@@ -265,6 +265,9 @@
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
+      <property name="toolTip">
+       <string>Put Daemon to Sleep or Wake Up</string>
+      </property>
       <property name="text">
        <string>Do&amp;rmant
 Mode</string>
@@ -279,6 +282,12 @@ Mode</string>
        <width>390</width>
        <height>190</height>
       </rect>
+     </property>
+     <property name="toolTip">
+      <string>Command Output</string>
+     </property>
+     <property name="statusTip">
+      <string/>
      </property>
      <property name="frameShape">
       <enum>QFrame::Box</enum>
