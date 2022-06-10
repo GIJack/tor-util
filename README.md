@@ -11,7 +11,7 @@ features in Qt.
 
 GUI
 ---
-![screenshot-tab1](screenshot1.png) ![screenshot-tab2](screenshot2.png)
+![screenshot-tab1-1](screenshot1.png) ![screenshot-tab1-2](screenshot2.png) ![screenshot-tab2](screenshot3.png)
 
 Command Line
 ------------
