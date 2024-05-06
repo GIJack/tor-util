@@ -45,7 +45,7 @@ for item in f.readlines():
 f.close()
 
 setup(name='tor_util',
-      version='0.1.3',
+      version='0.1.4',
       description='Utility for controling TOR via the API',
       author='GI Jack',
       author_email='GI_Jack@hackermail.com',
@@ -55,7 +55,7 @@ setup(name='tor_util',
       scripts=['tor_util_cli.py', 'tor_util_gui.py'],
       data_files=added_files,
       classifiers=[
-          'Development Status :: 3 - Alpha ',
+          'Development Status :: 4 - Beta',
           'Environment :: Console',
           'Environment :: X11 Applications :: Qt',
           'Intended Audience :: End Users/Desktop',
