@@ -16,7 +16,7 @@ generates new tunnels, and with it, a new exit node that has a new IP.
 
 	flush_dns		Flushes DNS cache on TOR daemon.
 
-	dormant_mode \__	Turns Dormant Mode on/off. Newish feature to TOR
+	dormant_mode \\__	Turns Dormant Mode on/off. Newish feature to TOR
 	active_mode  /
     
     daemon_status		Checks operational status of the TOR Daemon.
